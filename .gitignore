@@ -1,0 +1,31 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.lof
+*.lot
+*.run.xml
+*-blx.bib
+*.bcf
+
+# Compiled PDFs (kept out of git, generated locally)
+*.pdf
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+.venv/

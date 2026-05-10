@@ -1,0 +1,122 @@
+% ============================================================
+% [SUSPECT FLAG (2026-04-23 設置) → CLEAR (2026-05-01 03:10 JST)]
+% ============================================================
+% Generated within 4/18-4/22 thinking-extended degrade window (K9_118.6).
+% Probe matrix verification (B2 designer, 2026-05-01) indirect-cleared:
+% K9_118 batch content-correct via §S-SPL exact match + §S-CB-diag
+% superior-to-o3 quality. Cover letter is summary-style (low reasoning
+% requirement) and inherits batch clearance.
+% Reference: 6回目作業用_出力はここだけにしろ/notes/note_wave61_suspect_flag_disposition_2026-05-01.md
+% Reference: alert_20260501_0310_JST_..._wave61_suspect_flag_clear_content_diff_verdict_SA_unfreeze.md
+% SA 投稿可 (SA submission unfreeze, 2026-05-01 03:10 JST).
+% V6 = V5 + this CLEAR header update (no body change).
+% ============================================================
+%
+% Paper 4 Cover Letter V5 — Science Advances submission
+% Derived from K9_118.6 (wave60 response), Q3 recommended 500w standard version.
+% V4 (standalone file) retired; V5 bumped to refresh header label and lock SA-specific framing.
+% 2026-04-23 wave61 integration by Ａ１ (加藤方程式９). SUSPECT (see flag above).
+%
+% Change log vs V4:
+%   - Header label bumped V3->V5 (V4 internal file still labeled "V3" at top; V5 corrects the label)
+%   - 22-indicator waterfall (17/22 -> 21/22 -> 22/22) kept verbatim as cited sequence
+%   - Sublinear panel breakdown 10/13 + 5/5 + 2/4 inserted explicitly (integer-resolution row)
+%   - Near-linear indicators reframed as finite-depth cross-branch balance (NOT H->infty)
+%   - SA-fit paragraph rewritten: broad complexity / physics-of-cities, not narrow statistical fit
+%   - Reviewer candidate templates (3 profiles) preserved as comment block below \end{document}
+%   - Recommended edit (per K9_118.6 Q5): replace [insert 1-2 exact journal-fit references]
+%     placeholder with 1-2 recent SA complex-systems / network social-science papers
+%     before final submission, or delete the sentence.
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\pagestyle{empty}
+
+\begin{document}
+
+\section*{Cover Letter V5 --- Science Advances}
+
+April 2026
+
+Dear Editors of \emph{Science Advances},
+
+Please consider my manuscript, ``The Kato Equation: A Zero-Parameter Exponent Selection Rule for Urban Scaling,'' for publication as a Research Article in \emph{Science Advances}. The manuscript advances a physics-of-cities claim: urban exponents are not independent fitted slopes, but selected by a relay-depth ladder whose rungs can be assigned from network structure and composition.
+
+Bettencourt, Lobo, Helbing, K{\"u}hnert, and West established the canonical empirical problem: cities display systematic superlinear, linear, and sublinear scaling across innovation, economic, and infrastructure observables. Subsequent network theories explain why departures from linearity arise. This manuscript asks the complementary selection question: why does an observable land near \(\beta\simeq 1.27\), \(1.12\), \(1.00\), or \(0.80\), rather than merely somewhere above or below one? The proposed answer is a zero-parameter primitive,
+\[
+\epsilon(H)=\frac{1}{H\ln(2H+1)},\qquad
+\beta_{\pm}(H)=1\pm\epsilon(H),
+\]
+with \(z(H)=2H+1\) fixed by serial relay axioms. Once \(H\) is assigned independently, no coefficient is fit to the target exponent.
+
+The main empirical confrontation uses the canonical 22-indicator panel. Integer \(H\) predictions match \(17/22\) reported 95\% confidence intervals. Network-anchored composition raises coverage to \(21/22\), and continuous derived \(H_{\mathrm{eff}}\) resolves the final case, giving \(22/22\) without indicator-specific slope fitting. The manuscript reports \(\mathrm{MAE}=0.0308\), \(\mathrm{RMSE}=0.0447\), explicit null-model comparisons, and stability checks. The source panel gives the integer-resolution breakdown as \(10/13\) superlinear, \(5/5\) linear, and \(2/4\) sublinear; the sublinear infrastructure rows are then localized on the mirror branch rather than treated as a separate empirical class. Near-linear indicators are interpreted as finite-depth cross-branch balances, not as an \(H\to\infty\) limit.
+
+The paper's methodological contribution is also important. Relay depth is not assigned after seeing \(\beta_{\mathrm{obs}}\). The manuscript states a two-stage protocol in which structural evidence---CPC patent routes, input-output chains, enterprise-size distributions, occupational composition, and related network indicators---fixes \(H\) or mixture weights before the exponent is evaluated. This makes the theory falsifiable: a pure observable whose independently measured relay structure predicts the wrong rung is a failed prediction. It also makes the positive and negative branches equally testable, because patents, GDP, wages, roads, cables, and near-linear services are all evaluated against the same ladder rather than against separate sector-specific regressions.
+
+I believe \emph{Science Advances} is the right venue because the paper is broad enough for urban science, statistical physics, complexity, network theory, and economic geography, while remaining technically explicit and reproducible. It is broader than a specialized physics submission, because the central object is not a formal scaling law alone but a cross-domain framework for the physics of cities. It is also more methodological and openly falsifiable than a short empirical report, because the paper supplies the derivation, the benchmark ledger, the null models, and the pre-measurement protocol. The manuscript also aligns with recent \emph{Science Advances} work on complex systems and network-based quantitative social science [insert 1--2 exact journal-fit references here if desired].
+
+The manuscript is original, is not under consideration elsewhere, and I declare no competing interests. Primary data sources are identified, and all simulation code and processed datasets will be deposited in a public repository upon acceptance.
+
+Sincerely,
+
+Shota Kato\\
+AI and Future Co., Ltd., Tokyo, Japan\\
+founder@aiandfuture.co.jp
+
+\end{document}
+
+% ============================================================
+% REVIEWER CANDIDATE TEMPLATES (not part of cover letter body)
+% Source: K9_118.6 Q6. Use in the submission system's "suggested
+% reviewers" fields. Do NOT paste into the cover letter text.
+% Replace "[Name], [Institution]" before submission.
+% ============================================================
+%
+% Reviewer A --- Urban scaling quantitative, Bettencourt--West lineage
+%   Expertise: metropolitan scaling laws, urban innovation indicators,
+%     Bettencourt--West tradition of city networks and scaling exponents.
+%   Suitability: can judge whether the manuscript fairly positions itself
+%     relative to canonical urban scaling theory and whether the 22-indicator
+%     confrontation, patent anchor, GDP corridor, and sublinear infrastructure
+%     interpretation are credible.
+%   COI: must have no recent collaboration, coauthorship, institutional tie,
+%     advisory role, financial relationship, or active dispute with the author.
+%
+% Reviewer B --- Econophysics / complexity scaling
+%   Expertise: scaling laws, null-model comparison, heavy-tailed systems,
+%     power-law diagnostics, multi-indicator empirical validation.
+%   Suitability: can assess whether the zero-parameter ladder, null-model
+%     comparisons, CI-coverage claims, and mixture/composition treatment are
+%     methodologically persuasive rather than overfit.
+%   COI: avoid anyone with a direct personal, institutional, funding, or
+%     publication conflict; prefer someone able to evaluate the work
+%     independently of the Kato paper sequence.
+%
+% Reviewer C --- Statistical physics of networks
+%   Expertise: graph hierarchy, mixture models, information-theoretic
+%     structure, scaling behavior on complex networks.
+%   Suitability: can evaluate the relay-depth interpretation, the
+%     z(H) = 2H+1 structural claim, network-anchored H-assignment protocol,
+%     and conditional identification logic.
+%   COI: no collaboration with the author, no financial or organizational
+%     connection, not biased by direct involvement in competing versions of
+%     the same framework.
+%
+% ============================================================
+% PRE-SUBMISSION CHECKLIST (K9_118.6 Q5 tweak proposal)
+% ============================================================
+% [ ] Replace "[insert 1--2 exact journal-fit references here if desired]"
+%     with 1--2 recent SA complex-systems / network social-science papers,
+%     OR delete the sentence entirely if no precise fit is found.
+% [ ] Verify title matches V54 main cover: "The Kato Equation: A
+%     Zero-Parameter Exponent Selection Rule for Urban Scaling".
+% [ ] Do NOT include the "H=2.5 falsifier" example in the submitted cover
+%     letter unless the editor-facing version needs it explicitly
+%     (it is accurate only under the "pure observable, integer-regime,
+%     independently measured structure" condition).
+% ============================================================

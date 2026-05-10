@@ -1,0 +1,33 @@
+{
+  "title": "The Kato Equation: A Zero-Parameter Exponent Selection Rule for Urban Scaling",
+  "description": "Working paper on a zero-parameter relay-depth ladder for urban scaling exponents. Tested against the Bettencourt et al. (PNAS 2007) 22-indicator panel: integer relay-depth predictions match 17/22 reported confidence intervals; network-anchored composition lifts coverage to 21/22; a label-free two-component cluster mixture (H=2 and H=3) recovers all 22/22, with MAE = 0.031 and RMSE = 0.045. Patents land on H=2; GDP and wages occupy an H=4-5 corridor; infrastructure follows the negative branch. Paper 4 of the Kato Equation Working Paper Cluster (Papers 0-9 forthcoming).",
+  "creators": [
+    {
+      "name": "Kato, Shota",
+      "affiliation": "AI and Future Co., Ltd., Tokyo, Japan",
+      "orcid": "0009-0007-6001-3267"
+    }
+  ],
+  "keywords": [
+    "urban scaling",
+    "complex systems",
+    "network theory",
+    "statistical physics",
+    "Bettencourt",
+    "physics of cities",
+    "Kato equation",
+    "relay-depth ladder"
+  ],
+  "license": "CC-BY-4.0",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "language": "eng",
+  "access_right": "open",
+  "communities": [],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/shotakato/kato-equation-paper4"
+    }
+  ]
+}
