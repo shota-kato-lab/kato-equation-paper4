@@ -1,6 +1,6 @@
 {
   "title": "The Kato Equation: A Zero-Parameter Exponent Selection Rule for Urban Scaling",
-  "description": "Working paper on a zero-parameter relay-depth ladder for urban scaling exponents. Tested against the Bettencourt et al. (PNAS 2007) 22-indicator panel: integer relay-depth predictions match 17/22 reported confidence intervals; network-anchored composition lifts coverage to 21/22; a label-free two-component cluster mixture (H=2 and H=3) recovers all 22/22, with MAE = 0.031 and RMSE = 0.045. Patents land on H=2; GDP and wages occupy an H=4-5 corridor; infrastructure follows the negative branch. Paper 4 of the Kato Equation Working Paper Cluster (Papers 0-9 forthcoming).",
+  "description": "Working paper on a zero-parameter relay-depth ladder for urban scaling exponents. Tested against the Bettencourt et al. (PNAS 2007) 22-indicator panel: integer relay-depth predictions match 17/22 reported confidence intervals; network-anchored composition lifts coverage to 21/22; a label-free K=2 lower-valley mixture (H in {1,2}) for physical d=3 cities recovers all 22/22, with MAE = 0.031 and RMSE = 0.045. Patents land on H=2; GDP and wages occupy an H=4-5 corridor; infrastructure follows the negative branch. Paper 4 of the Kato Equation Working Paper Cluster (Papers 0-10 plus Manifesto 1/2 forthcoming). Release v1.1 (manuscript V128/V129) polish wave: Manifesto 1 / Manifesto 2 reframe, abstract correction to K=2 lower-valley H in {1,2}, SI cross-time beta table column-collision fix, data and code availability section forward-looking (concept DOI primary).",
   "creators": [
     {
       "name": "Kato, Shota",
@@ -16,7 +16,9 @@
     "Bettencourt",
     "physics of cities",
     "Kato equation",
-    "relay-depth ladder"
+    "relay-depth ladder",
+    "integer-H mixture",
+    "lower-valley K=2"
   ],
   "license": "CC-BY-4.0",
   "upload_type": "publication",
@@ -27,7 +29,7 @@
   "related_identifiers": [
     {
       "relation": "isSupplementTo",
-      "identifier": "https://github.com/shotakato/kato-equation-paper4"
+      "identifier": "https://github.com/shota-kato-lab/kato-equation-paper4"
     }
   ]
 }
