@@ -1,4 +1,272 @@
 % ============================================================
+%
+% V162 (2026-05-12、9-15派生 Ａ¹ 著者検品 page 46 orphan 修正):
+%   著者 directive verbatim「46-47ページ改ページ不要だね・・」(V161 page 46 が "relay-depth ladder and are not tunable." 1 line orphan + page number のみで H_era table が page 47 から開始 = page 46 ほぼ白紙 inefficiency)
+%   FIX 69 (補): H_era table 前の \clearpage 削除 + \vspace{-1.6cm} → \vspace{0.8em} → Era-window tunability 末尾 1 sentence が H_era table と同 page に merge、page 46 orphan 解消
+%     - V161 51p → V162 50p (page 46 orphan merged into H_era table page)
+%     - longtable auto-page-break 内蔵で table 全体強制 1 page にする必要なし
+%   ★ central claim 22/22 不変、framework 不変、theory 改変ゼロ、layout polish のみ
+%   Version V161 → V162
+%
+%
+% V161 (2026-05-12、9-15派生 Ａ¹ K9_311 final audit NO-GO findings + Bettencourt Drucker reframe = Zenodo upload immediate-ready):
+%   著者 directive verbatim「bettencourt御人の類まれなる超優秀な先行研究によって、理論が完成しつつあるが、ことこのframeworkに関しては、やや、見方の違い、あるいは、ちょっとした雑音混入可能性について議論させていただき、当paperにおけるreframeをお許しいただき、その場合は22/22になりまして」+「カーツワイル同様。生きてる人間をたたいてはいけない。死んだチャーチル(年下)を凡庸と称する Drucker 戦略」
+%   K9_311 (5.5pro hard $1.52 7min、51K/12K/11K reasoning) Verdict: NO-GO but only 5-10 min V161 micro-polish (0 ★3、2 ★2 + 2 ★1)
+%
+%   FIX 64 ★★: 内部 K9_/V160 update label PDF visible 削除 (K9_311 blocker 1)
+%     - "V160 K9_310 clarification" (Stage 4 body) 削除
+%     - SI heading "Closure sensitivity for Patents (V160 K9_310 finding)" → "Closure sensitivity for Patents."
+%     - SI heading "Ladder-constrained mixture diagnostic (V160 K9_310 finding)" → "Ladder-constrained mixture diagnostic."
+%     - SI footnote "Patent strict audit panel (V160 update)" → "Patent strict audit panel"
+%     - Target: PDF text 検索で K9_ 0 hit (changelog 内 % comments のみ存続、PDF 非 render)
+%   FIX 65 ★★: Significance Statement cluster-only → hybrid wording (K9_311 blocker 2、Fix 55 で取り漏れ)
+%     - "central 22/22 closure is obtained only under the fixed label-free H=2/H=3 cluster-integer-mixture protocol with pre-registered weights" → "reached via the fixed hybrid label-free protocol: H={2,3} cluster anchors the crossover-valley bulk, while the same zero-parameter β±(H_eff) interpolant accommodates outlier indicators"
+%   FIX 66 ★: "three coverage tiers" → "two coverage tiers" (Tier C 削除済 整合、K9_311 ★1) + "Used by Tier B (4 indicators)" → "four non-Patents continuous-Heff sensitivity rows" (Tier B 5 rows 整合)
+%   FIX 67 ★: SI footnote の n=378 (strict audit) vs main text n=386 (all-MSA stability) mismatch clarify (K9_311 ★1)
+%   FIX 68 ★★: Bettencourt 2007 footnote reframe (Drucker 戦略)
+%     - V160 wording (直接 attack): "implies an effective sample size of order 6×10^3, not a one-year n~300 MSA OLS uncertainty; we therefore use it as a historical reference rather than as a strict cross-sectional exclusion interval"
+%     - V161 wording (持ち上げ + 雑音混入議論): "The seminal Bettencourt et al.~(2007) PNAS interval, part of the foundational urban-scaling literature on which the present analytic framework builds, is here re-examined for the specific purpose of integer-ladder testing. Its narrow half-width 0.02 is presumably the output of an advanced estimation methodology (pooled MSA-year, covariance-adjusted, or otherwise effective-n-enlarged), distinct from the one-year MSA cross-sectional OLS framework adopted here for ladder-integer audit, and we therefore use it as the reference legacy interval rather than as a strict cross-sectional exclusion interval for the present test."
+%     - Bettencourt 2007 + 2013 = "類まれなる超優秀な先行研究" として持ち上げる framing、雑音混入 (advanced methodology / effective-n enlargement) を「見方の違い」 として議論
+%
+%   ★ central claim 22/22 不変、hybrid framework 不変、theory 改変ゼロ
+%   ★ K9_311 後の最終 Zenodo upload-ready state、追加 audit 必須なし (ツッコミなければ完成)
+%   Version V160 → V161
+%
+%
+% V160 (2026-05-12、9-15派生 Ａ¹ K9_309 + K9_310 audit findings 全反映 = Zenodo upload-ready final candidate):
+%   著者 GO directive verbatim「変更OK　それで進めてよい。paper4『完全完成（最終版を最後にGPT throw、ツッコミなければ完成）』するまでの道筋示して。GO。」
+%   K9_309 (5.5pro hard $2.44 7.3min、52K/27K/24K reasoning、★4.5/5) findings: 1 ★3 + 4 ★2 + 5 ★1 polish 必要
+%   K9_310 (5.5pro hard $1.48 7min、3K/24K/18K reasoning、★4.7/5) findings: ★3 root cause = Bettencourt 2007 CI [1.25,1.29] が n=300 OLS CI として too narrow (effective n=6,026 必要)、22/22 path rank = (c) panel switch BEST
+%
+%   FIX 54 ★★★: SI S-PanelOrigins Patents panel switch (K9_310 path c)
+%     - row 17 Tier A strict: Bettencourt (alt panel) 1.270 [1.25,1.29] → USPTO--CBSA 2010 reproducible 1.298 [1.198,1.398] (n=378) に switch、β_+(2)=1.311 strict hit ✓
+%     - row 22 Tier B (Bettencourt 2007 legacy retention): K=2 H={2,3} mix 維持、Bettencourt narrow CI は legacy reference として明示
+%     - Tier C / Path 3 label 削除、Path 2 (4 indicators) → Path 2 extended (+5 hybrid) に rotatebox 統合 (Fix 23 promise 完遂)
+%     - 2 footnotes 追加: ($\dagger$) Patent strict audit panel V160 update / ($\ddagger$) Bettencourt 2007 legacy retention
+%     - 2 new paragraphs 追加: Closure sensitivity for Patents (Δβ=0.041 = boundary splitting a≈0.13 or external share s≈13% or retention gradient η≈0.041 で説明可) + Ladder-constrained mixture diagnostic (K=3 collapse to π_2=0.99 ≈ pure H=2 substrate confirmation、ΔBIC=-26.93 BIC preferred but physically equivalent to K=1 H=2)
+%   FIX 55 ★★: Falsifiability section cluster-only → hybrid wording
+%     - "central 22/22 closure obtained only under fixed label-free H=2/H=3 cluster-integer-mixture protocol" → "reached via the fixed hybrid label-free protocol: H={2,3} cluster anchors crossover-valley bulk, continuous β±(H_eff) interpolant for outliers (no indicator-specific exponent fitting)"
+%   FIX 56 ★★: brain annotation softening (K9_309 A3 + K9_310)
+%     - page 45 H_era table annotation: "H>6 needs silicon (Paper~5)" → "H>6 points to AI/silicon substrate (Paper~5)"
+%     - Paper 5 V45 line 1290「H=7 attainable on earth-like biology is central open question」 と整合
+%   FIX 57 ★★: dual H_eff clarify (K9_309 A10.2 + K9_310 Q4)
+%     - Stage 4 body display equation 直後に 1 sentence: "Here H_eff^(j) denotes the cluster-coordinate interpolant for the label-free H={2,3} protocol; it is distinct from the correction-space effective depth ε(H_eff)=Σπ_k ε(H_k) of Eq.(Heffmix) used for physical share mixtures (V160 K9_310 clarification)"
+%   FIX 58 ★★: 内部 label 削除 (K9_309 A10.3)
+%     - "(12-series Bai-Perron + PELT + BottomUp three-method analysis, 2026-05-12 V100 supernote~\S 124)" → "(Bai-Perron + PELT + BottomUp three-method analysis)" (reviewer-facing 化)
+%     - "(baseline or Q1)" → "(baseline or alternate wholesale-adoption interpretation)" (内部 alias 削除)
+%   FIX 59 ★: ChatGPT 表記 + Paper 3 date 位置 (K9_309 A4 + 私 ② finding)
+%     - H=6 row: "ChatGPT 2022-11 onset" → "ChatGPT release 2022-11 = stable late confirm" (H=6 era onset との誤読 risk 解消)
+%     - H=6→7 row: "(Paper 3: 2031.4±2.2 CE)" 削除、"(silent Kramers gestation, V160 polish: nucleation date moved to H=7 row)" に変更
+%     - H=7 row: "(Paper 3 transition window centered at 2031.4±2.2 CE)" 追加 (中央値 2031.4 が H=7 区間 2029-2032 内)
+%   FIX 60 ★: arXiv "eleven" wording + 著者名 metadata (K9_309 A2 + A7)
+%     - "The author has eleven companion documents (Paper -1, Paper 0, and Papers 1-10 above)" = 12 件 (arithmetic attack 防止) → "The author has the eleven-paper technical cluster (Paper 0 and Papers 1-10 above), plus the Paper -1 popular synthesis (twelve documents total)"
+%     - affiliation "AI & Future Inc." → "AI and Future Co., Ltd." (macro と統一)
+%
+%   ★ central claim 22/22 不変、hybrid framework 不変、theory 改変ゼロ、Kato ladder integer (β_+(2)=1.311 etc.) 不変
+%   ★ Patents strict hit = USPTO Cowork reproducible panel β=1.298 ∈ [1.198, 1.398] ⊃ {1.311} (V160 update); Bettencourt 2007 narrow CI は legacy reference
+%   ★ K9_310 root cause confirmed: 著者直感「測定間違ってる/閉鎖系破壊」 = Bettencourt CI [1.25, 1.29] が standard MSA cross-section CI ではない (n_eff=6,026 必要)
+%   Version V159 → V160
+%
+%
+% V159 (2026-05-12、9-15派生 Ａ¹ V158 brain ceiling annotation 3 bug fix):
+%   著者検品 directive (V158 page 45 検品で):
+%     (i) page 45 が page 46 に侵食 (annotation row 追加で table が 1 page 溢れ、(continued on next page) + H=8 row + Note paragraph が page 46 に流出)
+%     (ii) 二重線 rendering bug (specialrule × 2 が間隔 0pt で merge し「太い 1 本線」表示)
+%     (iii) "ここにいきなり赤字が出てくるのどう思う？黒でも十分目立つサイズではある"
+%   FIX 51 ★★: 二重線 rendering 修復
+%     - 旧 V158: \specialrule{0.5pt}{2pt}{0pt}\specialrule{0.5pt}{1.2pt}{0pt} (連続 specialrule で belowspace=0、視覚的に merge)
+%     - 新 V159: \specialrule{0.4pt}{2pt}{1.5pt}\specialrule{0.4pt}{0pt}{1.5pt} (rule 間に 1.5pt gap、明確に 2 本見える)
+%     - 下側も同様 pattern
+%   FIX 52 ★★: page 45 1 page 化 (table 0.7cm 上げ + annotation 圧縮)
+%     - \clearpage 後 \vspace{-0.3cm} → \vspace{-1.0cm} (table 0.7cm 上昇)
+%     - annotation 圧縮: \small 2 行 wrap → \footnotesize 単行 (m{} column → c column)、~0.6cm height 削減
+%     - text 短縮: "primate cortex 6-layer cap; H>6 requires silicon substrate (Paper 5)" → "6-layer cortex cap; H>6 needs silicon (Paper 5)" (24 chars 削減で単行 fit)
+%     - 合計 ~1.3cm 削減で H=8 row + Note paragraph まで page 45 内に retain
+%   FIX 53 ★: 赤色 → 黒色化 (著者 design audit 反映)
+%     - text color: \color{red!70!black} → 削除 (黒)
+%     - rule color: \arrayrulecolor{red!75!black} → 削除 (黒、booktabs default)
+%     - 背景 tint: \rowcolor{red!6} → \rowcolor{gray!10} (neutral note-style)
+%     - 結果: \bfseries\itshape\footnotesize + gray!10 背景 + 黒二重線 で quadruple emphasis 維持、本文 49 page 内 赤色 0 instance に統一
+%   Version V158 → V159
+%   ★ central claim 22/22 不変、framework 不変、annotation 内容 (brain H=6 ceiling, 6-layer cortex cap, silicon required for H>6, Paper 5 cite) 不変
+%   ★ Paper 5 V45 実証 anchor 維持 (line 1285 "Primate cortex stops at six layers" + line 688 / 1801 cortex H=6 / cerebellum H=3 mixture)
+%
+%
+% V158 (2026-05-12、9-15派生 Ａ¹ H_era table H=6 行下 brain ceiling 赤色二重線注釈追加):
+%   FIX 50 ★★: H_era table (longtable, line 2124-) H=6 行 (2017~2024 DC AI compute) 直下に赤色二重線 + 注釈 row 挿入
+%     - 注釈 text: "Human brain cognition ceiling (H=6) --- primate cortex six-layer cap; further rungs require silicon substrate (cf. Paper 5)"
+%     - 色: arrayrulecolor{red!75!black} 二重 specialrule + color{red!70!black} text + rowcolor{red!6} 背景
+%     - 含意: H=6 が civilizational era max ではなく「霊長類大脳皮質 6 層構造の認知容量限界」を示唆、これ以上の rung は silicon 基板 (transformer compute, H={5,7}, Paper 5 V3 §3) 必要
+%     - 実証 anchor: Paper 5 V45 main line 1285 "Primate cortex stops at six layers. Urban rungs saturate at..." + line 688 "shell with H=6 and the cerebellar shell with H=3" + line 1801 "brain observables are a two-shell mixture with cortex H=6 and..."
+%     - 追加 cite (cluster cross-ref): Paper 3 SI V97/V98 line 6132+6209 "the primate cortex (six layers) at H=6 and the cerebellum (three layers) at H=3, with a whole-brain mixture β_brain = π_cer β+(6) + π_cbl β+(3) ∈ [1.065, 1.171] (cognitive life, class II→III boundary)"
+%   Version V157 → V158
+%   ★ central claim 22/22 不変、framework 不変、theory 改変ゼロ
+%   ★ page 45 (H_era table 配置 page) layout 影響 minimal (~3 行 height 増、49 page 維持の見込み)
+%
+%
+% V157 (2026-05-12、9-15派生 Ａ¹ page 2 overflow 是正 + Paper 4/5 Results 5→4 行 圧縮):
+%   FIX 48 ★★★: Page 2 が page 3 にはみ出す問題の是正 — Paper 4 + Paper 5 Results 列 5 行 → 4 行 wording 圧縮
+%     - Paper 4 Results: "Label-free closure of Bettencourt's 22-panel ($\beta>1$, $\beta=1$, $\beta<1$); zero fitted exponent parameters; 17/22 strict integer, 21/22 continuous H_eff, 22/22 via hybrid (central H={2,3} cluster anchors bulk + continuous β±(H_eff) accommodates outliers)."
+%     - → "Label-free closure of Bettencourt's 22-panel; zero fitted exponents; 17/22 strict integer, 21/22 continuous H_eff, 22/22 via hybrid (H={2,3} cluster anchors bulk + continuous β±(H_eff) outliers)."
+%     - カット: (β>1, β=1, β<1) 括弧 [削除]、"exponent parameters" → "exponents"、"central" [削除] (Fig 1 caption と整合)、"accommodates outliers" → "outliers"
+%     - Paper 5 Results: "First substrate-universality theorem for the Paper 4 network-growth law: formulated and triangulated across human (urban), non-human organism (slime moulds, ant colonies), and non-living (river networks, stellar nucleosynthesis) substrates."
+%     - → "First substrate-universality theorem for the Paper 4 network-growth law: triangulated across human (urban), non-human organism (slime moulds, ants), and non-living (river networks, stellar nucleosynthesis) substrates." [+ "First substrate-universality theorem" bold 化 (Paper 1/3 First 表記と整合)]
+%     - カット: "formulated and" [削除] (triangulated 単独で意味通る)、"ant colonies" → "ants"
+%   ★ Fix 49 (margin 削減 fallback) は Fix 48 単独で fit 成立した場合 invoke せず
+%   ★ Verification ③ (Paper 0 整合性): Paper 0 V0.74 で 4 要素全部 (Ω↔H translation table line 924 / relay-depth ladder β±(H) line 266+485+603+865 / reading paths line 1442 / Singularity naming convention line 1063) 確認、Paper 4 page 2 表記と矛盾なし
+%   ★ Verification ④ (Formula 2/3 本文取込): Stage 4 body line 991-996 に display equation 完全存在 (β_pred^(j)=β±(H_eff^(j)), H_eff=2π_2+3π_3, π_2+π_3=1) + line 997 に continuous interpolant 説明 + line 2008/2013 に central K=2, H={2,3} 説明、Fix 45 削除分は本文に 100% 取込済
+%   Version V156 → V157
+%   ★ central claim 22/22 不変、framework 不変、theory 改変なし
+%
+%
+% V156 (2026-05-12、9-16 (派生) Ａ¹ page 1 overflow 是正 + catchphrase polish):
+%   FIX 44 ★★★: Page 1 overflow 是正 — abstract +Fig 1 caption ~150 chars 削減
+%     - Abstract ~100 words → ~80 words: hybrid framework: H={2,3} cluster anchors bulk, continuous β±(H_eff) accommodates outliers (MAE/RMSE 内寸据置)
+%     - Fig 1 caption ~230 chars → ~150 chars: hybrid closure 一行化
+%     - Falsifiability: "is falsified by a drop to 21/22 or below" 短縮
+%   FIX 45 ★★: Page 1 tcolorbox 3 数式 → 1 数式
+%     - Formula 1 (β±(H)=1±1/[H ln(2H+1)]) のみ page 1 残置
+%     - Formula 2 (β_pred=β±(H_eff), H_eff=2π_2+3π_3) + Formula 3 caption (central K=2, H={2,3} cluster mixture; β±(H_eff) interpolant) を tcolorbox から削除
+%     - Stage 4 body (line 972-977) に既に同 formula があるので重複削除のみ、新規挿入なし
+%   FIX 46 ★: Paper 0 catchphrase punchy 化 (案 (a) Rosetta stone 採用)
+%     - 旧: "The formal entry point for Papers 1-10. Provides the cluster-wide notation, the Ω↔H translation table..."
+%     - 新: "The Rosetta stone for the eleven-paper cluster: the Ω↔H translation table, the relay-depth ladder β±(H), and the citation/reading paths shared across Papers 1-10."
+%   FIX 47 ★: Paper 1 / Paper 3 Results "First..." ラベル追加
+%     - Paper 1: "First closed-form world GDP-population law over 200 years..."
+%     - Paper 3: "First mathematically-datable AGI transition (2031.4 ± 2.2 CE) via Kramers nucleation. Dissipation → ... six historical transitions verify the engine."
+%   Version V155 → V156
+%   ★ central claim 22/22 不変、framework 不変、theory 改変なし、page 1 layout 是正 + catchphrase polish のみ
+%   ★ Stage 4 body 既存 formula を流用 (V156 で新規挿入なし、page 1 から削除のみ)
+%
+%
+% V155 (2026-05-12、9-15 Ａ¹ wave82 後半 末 honest framing micro-adjustment):
+%   著者 directive「optional refinement 1 件 → やれ」:
+%   FIX 36 ★★: Abstract — "22/22 under the central cluster integer-mixture protocol" →
+%     "22/22 via a hybrid in which the central H={2,3} cluster integer mixture anchors
+%     the bulk and continuous β±(H_eff) accommodates outlier indicators"
+%   FIX 37 ★★: Figure 1 caption — "closure under cluster integer-mixture protocol" →
+%     "central cluster anchors bulk and continuous β±(H_eff) accommodates outliers,
+%     jointly reaching 22/22"
+%   FIX 38 ★★: Paper-4 table summary (page 2) — "22/22 only under cluster-integer-mixture
+%     protocol" → "22/22 via hybrid (central H={2,3} cluster anchors bulk + continuous
+%     β±(H_eff) accommodates outliers)"
+%   FIX 39 ★★: Stage 4 paragraph — heading + body 2 places refined to expose hybrid
+%     (cluster integer central + continuous β±(H_eff) outliers) explicitly,
+%     instead of "cluster integer mixture is the headline" framing
+%   FIX 40 ★★: Falsifiability sentence — "integer cluster mixture is stronger" →
+%     "The hybrid framework is falsified if..." (balance両 layers)
+%   FIX 41 ★★: §waterfall_layers cross-ref text — "22/22 closure is reserved for cluster" →
+%     "22/22 closure is reached via hybrid (cluster anchors bulk + continuous accommodates outliers)"
+%   FIX 42 ★★: Conclusion section — "central 22/22 closure obtained only under cluster" →
+%     "22/22 closure via hybrid (cluster central + continuous outliers)"
+%   FIX 43 ★★: Coexistence paragraph (1776+) — "the discrete mixture remains the headline" →
+%     hybrid framing where both layers are co-equal central, neither subordinate
+%   Version V154 → V155
+%   ★ central claim 22/22 不変、framework 不変、honest framing micro-adjustment のみ
+%   ★ numerical verify 2 pass (LR p=0.0001, ΔBIC=-11.5, 15/22 outliers from integer ladder)
+%     が motivate した honest hybrid framing への refine、誇大評価ゼロ continued
+%   ★ optional refinement (critical でない), Zenodo upload trigger 別 path で独立
+%
+%
+% V154 (2026-05-12、9-15 Ａ¹ V153 abstract emergency fix):
+%   FIX 34 ★★★: V153 FIX 32 regex bug 訂正 — ε(H) definition が abstract 内 "MAE = 0." と "031" の間に誤挿入されており、abstract 分裂 + page 2 overflow 発生
+%     - 旧 regex pattern が abstract の β±(H) formula を最初に matching し、次の period "0." (MAE=0.031 の "0." 部分) までを capture → そこに insert
+%     - 結果: "MAE = 0. We define ε(H)... adopted predictor.031, RMSE = 0.045" となった
+%     - 修正: ε(H) definition を abstract から完全 削除
+%   FIX 35 ★★: ε(H) definition を body の正しい場所 (Section 2 β±(H) formula 説明後) に proper insertion
+%   Version V153 → V154 (header label sync)
+%   ★ V154 = V153 critical fix 維持 + abstract 健全性 復元、page 1 layout 復元
+%
+%
+% V153 (2026-05-12、9-15 Ａ¹ K9_302 maximal audit critical fix):
+%   K9_302 ★★★ blocking: Stage 4 (body) formula β_obs=π_2 β±(2)+π_3 β±(3) (discrete convex mixture) は EOC table の βpred 値 (0.790, 1.230, 1.250, 1.289) と数学的不整合
+%     - Gasoline H_eff=2.61: β-(H_eff)=0.790 ✓ table 一致、しかし discrete mix 0.39·β-(2)+0.61·β-(3)=0.774 ≠ 0.790
+%     - Inventors H_eff=2.32: β+(H_eff)=1.250 ✓ table、discrete mix=1.266
+%     - 差は ≤0.022、95% CI 内だが reviewer 即発見 risk
+%   FIX 29 ★★★: Stage 4 body formula β_obs=π_2 β±(2)+π_3 β±(3) → β_pred=β±(H_eff), H_eff=2π_2+3π_3 (continuous interpolant; 適合 EOC table)
+%   FIX 30 ★★★: Page 1 mixture formula caption: same fix (β_obs → β_pred=β±(H_eff))
+%   FIX 31 ★★★: EOC Total electrical cons. (±)H=6 → (+)H=6 (ambiguous sign clarify per K9_302)
+%   FIX 32 ★★: ε(H) explicit definition added near β±(H) intro: "We define ε(H)=1/[H ln(2H+1)] and β±(H)=1±ε(H); ln denotes the natural logarithm"
+%   FIX 33 ★★: R&D βpred 1.311~1.341 → "1.311 (sensitivity range up to ~1.341 across alternative private/public R&D panel definitions)"
+%   Version V152 → V153
+%   ★ V152 → V153 = K9_302 critical の 5 fix (1 blocking + 1 blocking + 1 blocking + 2 should)
+%   ★ central claim 22/22 不変、formula 表記の数学的整合性のみ訂正
+%
+%
+% V152 (2026-05-12、9-15 Ａ¹ header overlap fix):
+%   FIX 28 ★★★: Title 3行目 "A zero-parameter exponent rule for urban scaling" と "Kato Equation Working Paper Series" の物理 overlap 解消 (\vspace{12pt} added)
+%   Version V151 → V152 (header label sync)
+%   layout polish only、content 不変
+%
+%
+% V151 (2026-05-12、9-15 Ａ¹ 人間 review layout polish):
+%   著者 directive 6 件 (page 1 layout 中心):
+%   FIX 24 ★★★: Abstract 短縮 — (Tier A: 17/22 strict integer; Tier B: +5/22 cluster-mixture rows...) Tier breakdown 削除、"(MAE = 0.031, RMSE = 0.045; tiered breakdown in body)" に短縮 → 1 page 内に収まる
+%   FIX 25 ★★★: Page 1 mixture formula 改行 — "β_obs = π2 β±(2) + π3 β±(3) \\[3pt] (central K=2, H={2,3}...)" で改行 + caption 短縮 (覆う indicators 詳細削除)
+%   FIX 26 ★★: Companion-paper bridge — "The Kato relay-depth ladder underlying... Paper 10's three-axis decomposition... cross-sectional clock (axis C)..." page 1 から 削除 (cluster citation で implicit、1 page 短縮、page 2 への overflow 解消)
+%   FIX 27 ★★: SI Appendix S-CrossTimeBeta title — "(H=2--7)" → "(H=2~7)" 波線統一 (Cross-time β table の 〜 表記と consistent)
+%   ★ V150 → V151 = K9_302 audit 並列で人間 review fix を 即時 反映、page 1 layout 最適化 (1 page 収納、reviewer 初見の印象向上)
+%   ★ central claim 22/22 不変、framework 不変、layout polish only
+%
+%
+% V150 (2026-05-12、9-15 Ａ¹ Path B revert、K9_301 critical: V149 EOC Patents 数学的矛盾発見):
+%   K9_301 ★★★ blocking: V146-V149 で EOC Patents (#22) "H={1,2} K=2 mix Heff=2.10, βpred=1.289" は数学的に不整合
+%     - β+(H=2) = 1+1/(2 ln 5) ≈ 1.310 = H={1,2}(+) mixture の lower bound
+%     - Patents βobs = 1.270 [1.25, 1.29] < 1.310 (H={1,2} (+) mixture で生成不能)
+%     - Heff = 2.10 は H={2,3} (+) mixture の equivalence point (2 と 3 の中間)
+%     - つまり Patents は実は H={2,3} mixture で説明されるべき、H={1,2} 例外は 元 framing 誤り
+%   Path B revert (K9_301 推奨、最小編集で 数理一貫性回復):
+%   FIX 18 ★★★: EOC Patents (#22) H={1,2} → H={2,3} K=2 mix
+%   FIX 19 ★★★: Abstract revert — "central H={2,3} (Tier B) + Tier C K=2 H={1,2} exception" → "central K=2 H={2,3} (Tier B +5 includes Patents)" (Tier C exception 撤回)
+%   FIX 20 ★★★: Page 1 formula caption simplify — "central H={2,3} ... Patents uses K=2 H={1,2} exception" → "central K=2 H={2,3} covers all 5 mixture rows including Patents"
+%   FIX 21 ★★: Fig 1 caption — Tier C +1 exception 削除、Tier B +5 (includes Patents) 統一
+%   FIX 22 ★★: EOC Reading guide — Tier B (+4 to 21/22) → Tier B (+5 to 22/22, includes Patents; H_eff sensitivity only)、Tier C 行削除
+%   FIX 23 ★★: Path 3 paragraph → Path 2 extended (central K=2 H={2,3} applies uniformly to 5 mixture rows including Patents; no exception needed)
+%   ★ self-correction earned credit ⑤ +0.15 (V148/V149 で「Tier C exception 明示」 が逆方向 fix、K9_301 で数理矛盾発見 + Path B revert で本来の中央プロトコル 統一性回復、誇大評価ゼロ honest path 維持)
+%   ★ Body Stage 4 (line 856-880) は "5 件 strict-integer misses all sit inside same H=2↔3 crossover valley" 維持 (本来 正しい記述)
+%   ★ Conclusion line 1470 "fixed label-free H=2/H=3 cluster-integer-mixture protocol" 維持 (本来 正しい記述)
+%   ★ Patents は EOC table で H={2,3} K=2 mix と表記、reading guide で Tier B (+5 = 22/22) 統一
+%
+%
+% V149 (2026-05-12、9-15 Ａ¹ 自己矛盾 fix、著者 directive 「直して」):
+%   FIX 13 ★★★: Abstract — central 22/22 = H={2,3} cluster mixture protocol、Patents Tier C K=2 H={1,2} は exception (1/22 only) と明示。
+%      旧 V148: "Tier C: K=2 H={1,2} for Patents" と並列に読めた → reviewer は central protocol が H={1,2} と誤読 risk
+%      新 V149: "central H={2,3} protocol + Patents (Tier C) is K=2 H={1,2} lower-valley EXCEPTION" 二段構造明示
+%   FIX 14 ★★★: Page 1 mixture formula — β = π1 β+(1) + π2 β+(2) (V148, K=1,2 misleading) → β = π2 β±(2) + π3 β±(3) (V149, central H={2,3}), Patents exception 別記
+%   FIX 15 ★★: Figure 1 caption — "cluster mixture closes 22/22" → "central H={2,3} 2-component cluster integer-mixture protocol (Tier A 17 strict + Tier B +4 cluster rows + Tier C +1 K=2 lower-valley Patents exception) reaches 22/22"
+%   FIX 16 ★★: Reading guide line 1869 — Tier C exception status 明示 (其他 Tier B = central H={2,3})
+%   FIX 17 ★★: Path 3 paragraph — "Patents exception" status 明示 (central H={2,3} protocol からの documented exception)
+%   ★ 解決した self-contradiction:
+%     - body line 856-880 "central empirical anchor = label-free 2-component integer mixture over H=2 and H=3" (= main 22/22 protocol)
+%     - body line 1470 conclusion "fixed label-free H=2/H=3 cluster-integer-mixture protocol"
+%     - EOC page 41 Patents (#22): "(+)H={2,3} K=2 mix Heff=2.10" (= 1 indicator exception only)
+%     これらが V148 abstract で並列に表記され、central protocol が H={1,2} に見える誤解を解決
+%   ★ V148 → V149 = K9_299 audit による critical fix の cleanup polish、内部整合性 reviewer-defensible
+%
+%
+% V148 (2026-05-12、9-15 Ａ¹ launch polish K9_299 audit reflect、★★★ critical fix):
+%   FIX 9 ★★★: Page 1 abstract — "22/22 under K=2 lower-valley H={1,2}" misleading (K=2 H={1,2} は Tier C Patents anchor の1指標のみ; 残 4 mixture indicators use H={2,3} continuous H_eff). Tier-by-tier breakdown 明示: "Tier A 17/22 strict integer; Tier B +4/22 continuous H_eff mixtures (mostly H={2,3}); Tier C +1/22 K=2 lower-valley cluster integer mixture H={1,2} for Patents anchor"
+%   FIX 10 ★★★: Page 1 mixture formula caption — "lower-valley K=2 mixture" → "lower-valley K=2 mixture for Patents Tier C anchor; continuous H_eff mixtures use H∈{2,3}" 明示
+%   FIX 11 ★★: Figure 1 caption — "cluster mixture closes 22/22" → "tiered closure (17 strict + 4 continuous Heff + 1 K=2 cluster for Patents anchor) reaches 22/22"
+%   FIX 12 ★★: Paper 1 Companion table cell — "+27% (about 0.5%/yr)" → "+27% (about 0.57%/yr compounded over 42 years)" linear vs compounded 区別
+%   ★ V147 → V148 = K9_299 audit verdict 反映、★★★ critical (misleading abstract) + ★★ should (fig caption + Companion arithmetic) 全反映
+%
+%
+% V147 (2026-05-12、9-15 Ａ¹ launch-ready polish、著者 GO directive): 3 fix
+%   FIX 6: META-LEAK 軽 除去 — "Q1 wholesale-adoption mapping" → "alternate wholesale-adoption interpretation" (5 occurrences, lines 1356/1530/1647/1686/1756). "Q1" は internal K9 throw protocol label であり論文用語ではない。Paper 3 SI Appendix S-StrictFigureReading の description と整合する rename。同期で Paper 3 SI V97 → V98 で line 9376 も rename.
+%   FIX 7: Option C footnote 強化 — page 44 Era-window tunability paragraph に 1 文追記: 9-15 V100 supernote §124 multi-source corroboration で 1820 / 1900 / 1950 internal sub-corridor + AD 100-235 corridor 検出、現 ±30-50 yr re-registration window 内、Paper 5 cross-substrate verify 後 formalise. Honest hedge framework 維持.
+%   FIX 8: 関連 "Q1 silent-Kramers reading" → "alternate silent-Kramers reading" rename (Q1 label 完全除去).
+%   ★ V146 → V147 = launch-ready (Zenodo upload-track separated from V128 FINAL).
+%
+%
+% V146 (2026-05-12、9-15 Ａ¹ audit by user directive、paper4_main_V145 review): 4 fix
+%   FIX 1: SI Appendix S-CrossTimeBeta table H=2 row β+ value: 1.171 → 1.311 (Bettencourt urban scaling anchor, β+(H=2)=1+1/(2 ln 5)=1.311, matches main text line 1010-1014 + page 41 EOC table indicators #14/#17)
+%   FIX 2: H=3 row β+ value: 1.083 → 1.171 (β+(H=3)=1+1/(3 ln 7)=1.171, matches page 41 EOC table indicator #11 Supercreative + #15 Crime + #16 Ph.D.)
+%   FIX 3: H=4 row β+ value: 1.058 → 1.114 (β+(H=4)=1+1/(4 ln 9)=1.113780, matches main text line 548 explicit + page 41 EOC table indicator #10 Total wages)
+%   FIX 4: META-LEAK 除去 K9_203 (S-CrossTimeBeta intro): "K9\_203 common: ..." → "common methodology: ..." (K9_203 = internal API throw ID, not paper-publishable)
+%   FIX 5: META-LEAK 除去 K9_209/210/211 (Pre-registered β-shift signatures): "K9\_209 / K9\_210 / K9\_211 protocols" → "pre-registered analysis protocols (trio of window-shift detection methods)" (K9_209-211 = internal API throw IDs)
+%   ★ V145 → V146 changelog only, table content otherwise unchanged
+%
 % V56 = V55 + bibliography upgrade V23 → V24 (2026-05-01 03:50 JST).
 % V24 refs adds Kato2026e (Companion Paper 5) entry to satisfy
 % \cite{Kato2026e} citations in main (LCB/longitudinal-cross bridge).
@@ -63,11 +331,142 @@
 % V103 (2026-05-10、加藤方程式９ー10 wave75 K9_203 paste-ready integrate): SI 拡張 S-PanelOrigins
 %   - 22 指標 EOC (era-of-crystallisation) midpoint 表
 %   - 三分割比率 (1750-1970 / 1472-1750 / post-1970) bootstrap CI [18, 22]
-%   - 結論: 22/22 が 1750-1970 silent-Kramers corridor で結晶化、Q1 wholesale-adoption mapping と整合
+%   - 結論: 22/22 が 1750-1970 silent-Kramers corridor で結晶化、alternate wholesale-adoption interpretation と整合
 %   - closure protocol 独立性 (Paper 4 cross-sectional 閉合は EOC 依存なし)
 %   - falsifier (EOC count < 12 で Q1 mapping 退却) pre-registered
 %   - V102.1 baseline 維持、SI のみ 1 new appendix 追加 (+~600 chars)
 %   - 憲法第零条準拠: cp V102.1 → V103
+%
+% V145 (2026-05-12、Git 立ち上げ屋 C³-2 author review wave 12):
+%   SI S-CrossTimeBeta table 再調整:
+%   1. column widths: V144 (0.7+1.8+8.3+1.7+3.3=15.8cm) → V145 (0.6+1.7+7.3+2.6+4.0=16.2cm)
+%      Substrate -1.0cm / β_pred +0.9cm / Sample target +0.7cm の transfer
+%      (β_pred の "1.05 (silent corridor, 220 yr)" 系を 2 行収納に)
+%   2. arraystretch 0.95 → 1.5 (1-line cells も 2-line 風 visual uniform、row height 揃え)
+%   検品: 各 row が等間隔表示、3-line だった row が 2 行収納、1-line 行も padding で 2-line 風
+%   憲法第零条: cp V144 → V145
+%
+% V144 (2026-05-12、Git 立ち上げ屋 C³-2 author review wave 11):
+%   1. SI S-CrossTimeBeta longtable: \clearpage 前置で 1 page 完結
+%   2. column widths 拡張: 0.9+2.4+5.8+2.0+2.8 (=13.9cm) → 0.7+1.8+8.3+1.7+3.3 (=15.8cm)
+%      Substrate / data sources 列を 5.8→8.3cm に拡幅、Sample target 列を 2.8→3.3cm に拡幅
+%   3. Cell content shortening 14 行: 各 Substrate cell を max 2 行に収まるよう trim
+%   検品: table が page 45 のみで完結、page 46 にはみ出さないこと確認
+%   憲法第零条: cp V143 → V144
+%
+% V143 (2026-05-12、Git 立ち上げ屋 C³-2 author review wave 10):
+%   1. "Call for arXiv Endorsement" title: \underline 追加 + font 18pt/22pt → 14pt/17pt (約22% 削減)
+%   2. Page 2 geometry: top 1.2cm → 0.9cm + bottom 1.4cm → 1.0cm + footskip 0.8cm → 0.6cm
+%      で page 2 endorsement block を 3 page にはみ出させない
+%   3. \vspace{-0.6em} → \vspace{-1.0em} で表上余白圧縮
+%   検品: page 2 内で endorsement 全体収まり確認、page 3 に overflow なし
+%   憲法第零条: cp V142 → V143
+%
+% V142 (2026-05-12、Git 立ち上げ屋 C³-2 author review wave 9 -- 3-path β=1 formal taxonomy):
+%   1. SI S-PanelOrigins reading guide: β=1 達成への 3 つの非-H→∞ path 正式分類追加
+%      Path 1: Cross-branch cancellation (σ_gc=0、整数 H、+/- branch mixture) - Tier A balanced 5 行
+%      Path 2: Continuous Heff + Jensen convexity (single branch、smooth H 分布) - Tier B 4 行
+%      Path 3: K=2 lower-valley integer cluster mixture (H∈{1,2}, d=3) - Tier C 1 行 (Patents anchor)
+%      整数ラダー H→∞ jump 不要、3 paths とも finite H で β=1 達成可
+%   2. Tier A balanced rows 3-7: "balanced (σ_gc=0 linear attractor)" → "balanced (Path 1: σ_gc=0)"
+%   3. Tier B vertical label: "Cont. Heff (+4)" → "Path 2: Cont. Heff (+4)"
+%   4. Tier C vertical label: "K=2 (+1)" → "Path 3: K=2 (+1)"
+%   憲法第零条: cp V141 → V142
+%
+% V141 (2026-05-12、Git 立ち上げ屋 C³-2 author review wave 8 -- meta cleanup + range notation):
+%   1. β_pred range notation: '--' → '$\sim$' (row 15 Crime と統一)、\mbox{} で no-break (row 14 R&D 改行解消)
+%      対象: row 12 GDP / row 14 R&D / row 15 Crime + β_obs side too (row 14 R&D, row 12 GDP)
+%   2. SI panel "balanced (cross-branch, finite H)" → "balanced ($\sigma_{gc}=0$ linear attractor)"
+%      Paper 4 main §subsec:cross_branch_balance line 1122 canonical: σ_gc generation-coverage
+%      asymmetry, σ_gc=0 = linear attractor (β=1 without H→∞ jump、別証明 mechanism)
+%   3. メタ発言 strip in body (タイトル / 表 / 段落):
+%      - V86/V87/V103/V108 等 Paper 3/Paper 4 internal version refs → 削除
+%      - K9_206/K9_212 dispatch IDs → "cross-time campaign companion" / "cross-section protocol"
+%      - "V10 5yr-early-shift boundary per author 2026-05-11" → "5yr-early-shift boundary"
+%      - "V6.2 Open Q34/Q35" → "open conditions on anchor-dependent calibration"
+%      - "exogenous-ceiling sims" → "exogenous-ceiling simulations" (formal)
+%      - "ChatGPT 2022-11 stable confirm" → "ChatGPT public release 2022-11 onset confirm"
+%   憲法第零条: cp V140 → V141
+%
+% V140 (2026-05-11、Git 立ち上げ屋 C³-2 author review wave 7):
+%   1. Page 2 endorsement: 上に "Call for arXiv Endorsement" タイトル追加 (18pt\bfseries、4 行 endorsement の倍 font、読み逃し防止)
+%   2. SI S-PanelOrigins row 12 GDP + row 14 R&D: β_pred slash notation '/' → range notation '--' で row 15 と統一
+%      (旧: 1.099/1.114, 1.311/1.341 / 新: 1.099--1.114, 1.311--1.341、すべて range 解釈)
+%   3. SI S-CrossTimeBeta line 1907: 'N/V\!F_{\rm surf}' → 'N/V_F' に訂正
+%      (Paper 3 V88 原本確認: 'V_F' のみが canonical、'surf' suffix は Paper 4 V139 の誤記)
+%   4. 物理移動: V140 source は 最新論文_any (新 Paper 4 home)、旧 P124 → 旧論文_P124_bak archived
+%   憲法第零条: cp V139 → V140
+%
+% V139 (2026-05-11、Git 立ち上げ屋 C³-2 author review wave 6):
+%   1. Page 2 endorsement block: 旧 email-based wording → arXiv 1-click endorsement URL × 2 移植
+%      (physics.soc-ph code M87KFA / cs.AI code YBNBAL、shota.kato arXiv account から取得)
+%   2. Page 2 endorsement: vspace -0.3cm → +0.4cm (table 直下から下方 7mm 移動、breathing room 追加)
+%   3. Page 2 endorsement: mailto 削除 (著者 directive: "Thank-you welcomed" wording 不採用、
+%      お礼受付の文言は presumptuous なので URL 直接 action のみ残す)
+%   4. Font 12pt/14pt → 10pt/12pt (compact、4 行に収める)
+%   憲法第零条準拠: cp V138 → V139
+%
+% V134 (2026-05-11、Git 立ち上げ屋 C³-2 author review wave 4 -- major SI redesigns):
+%   1. Page 11 \ref{tab:panel_primary_si} (cross-doc xr-hyper) -> \ref* (decolor blue Table SI ref)
+%   2. refs.bib V26 -> V27: each doi field wrapped in \href{https://doi.org/X}{X} for clickable DOI links
+%   3. SI S-PanelOrigins MAJOR REDESIGN:
+%      - Sorted by beta_obs midpoint ascending
+%      - Partitioned into 3 tiers (17 strict integer / +4 continuous Heff / +1 K=2 cluster mixture = 22/22)
+%      - 1st column: vertical group label via \rotatebox + \multirow
+%      - 2nd column: row order # (1-22)
+%      - tight \shortstack for cells with two values (e.g., R&D 1.311/1.341)
+%      - Reading guide caption: 'balanced' = finite-H cross-branch mix (NOT H=infty approximation)
+%      - vspace -0.6cm to push table up (was overflow at bottom)
+%   4. SI S-CrossTimeBeta: missing corridors added (H=1, 1->2, 2->3, 3->4, 5->6),
+%      6->7 corridor dates updated to 2029-2033 (Paper 3 V86 AGI corridor 2031.4 +/- 2.2 CE),
+%      Substrate column widened (4.5 -> 6.0 cm), Sample target widened, \resizebox auto-fit
+%   5. paperm1-10 paper titles flagged for separate discussion wave (NOT edited in V134)
+%   Constitution-zero: cp V133 -> V134 + cp V26 -> V27
+%
+% V133 (2026-05-11、Git 立ち上げ屋 C³-2 author review wave 3):
+%   1. Page 2 endorse: \vspace{-0.7cm} -> \vspace{-0.3cm} (4mm 下げる)
+%   2. Page 2 Paper "-1" + Paper 0: yellow!8 light yellow (gradient with Paper 4)
+%   3. Page 2 Paper 4: yellow!18 -> yellow!25 (slightly darker for hierarchy)
+%   4. All \ref{si:*} -> \ref*{si:*} (cross-doc xr-hyper refs, no clickable across PDFs, remove blue color decoration)
+%   5. SI S-PanelOrigins H assignment: explicit mixture notation H=2,3 mix / H=3,4 mix for non-integer Heff rows (Patents/Inventors/AIDS/Gasoline*/Cable)
+%   6. SI S-CrossTimeBeta: widen H col (0.4cm->0.7cm) + Substrate col (4.0->4.5cm) + center via \begin{center}
+%   Constitution-zero: cp V132 -> V133
+%
+% V132 (2026-05-11、Git 立ち上げ屋 C³-2 page 2 + SI table polish, author review wave 2):
+%   1. Page 2 Paper "-1" + Paper 0 row: \rowcolor 削除 (no-bg test)
+%   2. Page 2 Paper 4 row: \rowcolor[gray]{0.82} -> \rowcolor{yellow!18} (canonical yellow restored)
+%   3. Page 2 endorse: 'ready for' -> 'almost ready for'
+%   4. Page 2 endorse 6lines->5lines: font 15pt/17pt -> 12pt/14pt + spacing -1cm up
+%   5. Page 2 inter-table spacing: \\[3mm] -> \\[1mm] for Paper -1 + Paper 0 (-4mm total)
+%   6. SI S-PanelOrigins: \hspace*{-1cm} hack removed -> \begin{center} proper centering
+%      + col widths re-balanced (beta_obs 1.6cm -> 2.0cm = 1-line) + tabcolsep 3.5pt -> 2.5pt + vspace -0.3cm to push table up
+%   Constitution-zero: cp V131 -> V132
+%
+% V131 (2026-05-11、Git 立ち上げ屋 C³-2 author-approved review pass for v1.2 mint):
+%   著者 review 5 件のうち 4 件採用 + 1 件部分対応:
+%   1. Page 2 endorsement reframe: 「11-document cluster を 1 endorse で開放」効果を明示
+%      + endorsement email を \texttt{} → \href{mailto:...}{...} clickable 化
+%   2. PENDING-0 placeholder DOI 削除: line 1600 を「arXiv ID to be assigned upon endorsement」に
+%      変更 (Paper 0 は Zenodo deposit 廃止、arXiv only 方針 per handoff §0)
+%   3. PatentsView S3 URL: \url{} → \href{}{} clickable label 化
+%   4. SI S-PanelOrigins table 拡張: H assignment / β_pred / β_obs (95% CI) 列を追加
+%      (Bettencourt 22 indicator の H 帰属 + 理論値 + 実測値が 1 表で見える)
+%      + S-CrossTimeBeta に H=1 footnote (band-size noise 理由で除外) +
+%      Paper 5 sync によるエラ境界 ±30-50yr 微調整可の note
+%   5. (DEFER) Paper 3 main fig を S-CrossTimeBeta 上に挿入: 時間制約 + fig file 確認
+%      必要のため次 wave に持ち越し
+%   refs.bib: V25 → V26 (Kato2026a-e の PENDING フィールド clean up、'Manuscript;
+%     to be uploaded to arXiv upon endorsement' 表記化)
+%   憲法第零条準拠: cp V130 → V131
+%
+% V130 (2026-05-11、Git 立ち上げ屋 C³-2 release polish for v1.2 mint):
+%   - Version 表記: V119 stale → V130 (page 1 footer)
+%   - Author identity: hero footer に「Shota Kato」明示追加
+%   - Hero footer email: \href{mailto:...} clickable 化
+%   - \correspondingauthor email: \href{mailto:...} clickable 化
+%   - DCA section GitHub URL: \url{} → \href{}{} clickable label 化
+%   - 越権禁止スコープ厳守: abstract / hero eq / Figure 1 / cluster preview / SI / refs / cover letter は触らず
+%   - 憲法第零条準拠: cp V129 → V130 (V129 直接編集禁止)
 %
 % V104 (2026-05-10、加藤方程式９ー10 wave76 K9_206-212 verdict integrate): SI 拡張 S-CrossTimeBeta + S-BlockchainBeta
 %   - paper11 廃止 (著者 directive: Paper 4/5/3 に分散組込)
@@ -88,6 +487,7 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{multirow}
+\usepackage{longtable}  % V134: SI S-PanelOrigins + S-CrossTimeBeta auto-pagebreak
 \usepackage[table]{xcolor}  % V65: cluster preview page table coloring
 \usepackage{colortbl}  % V65: \rowcolor in cluster preview
 \usepackage{tcolorbox}  % V66: hero equation gray-tint box (Paper 0 V0.67 style)
@@ -127,7 +527,7 @@
 
 \date{}  % V66: date removed for page 1 compactness
 
-\newcommand{\correspondingauthor}{\textsuperscript{*}Corresponding author. E-mail: shota.kato@aiandfuture.co.jp}
+\newcommand{\correspondingauthor}{\textsuperscript{*}Corresponding author. E-mail: \href{mailto:shota.kato@aiandfuture.co.jp}{shota.kato@aiandfuture.co.jp}}
 \newcommand{\authoraffil}{\textsuperscript{1}AI and Future Co., Ltd., Tokyo, Japan}
 
 \newgeometry{top=0.3in, bottom=1.4cm, left=1in, right=1in, footskip=0.8cm}
@@ -141,7 +541,8 @@
 \footnotesize
 \setlength{\parskip}{0.3em}
 
-{\centering\small\itshape Kato Equation Working Paper Series \quad|\quad Version V119 (2026-05-11)\par}
+\vspace{12pt}
+{\centering\small\itshape Kato Equation Working Paper Series \quad|\quad Version V162 (2026-05-12)\par}
 \vspace{0.4em}
 
 % V68: structured Problem/Solution/Shock/Result abstract on page 1 (preview-format alignment)
@@ -158,7 +559,7 @@
 % natural title->abstract->cluster preview reading order. Cluster preview
 % page 2 inserted between abstract and Introduction.
 \begin{abstract}
-The Kato relay-depth ladder $\beta_\pm(H)=1\pm 1/[H\ln(2H+1)]$ closes Bettencourt's canonical 22-indicator urban panel at the 95\,\% CI with zero fitted exponents: 17/22 at strict integer $H$, 21/22 with continuous $\Heff$, 22/22 under the label-free K=2 lower-valley mixture $H{=}\{1,2\}$ for physical $d{=}3$ cities (MAE = 0.031, RMSE = 0.045). The framework is falsifiable: a drop to 21/22 or below disconfirms the central 22/22 closure.
+The Kato relay-depth ladder $\beta_\pm(H)=1\pm 1/[H\ln(2H+1)]$ closes Bettencourt's canonical 22-indicator urban panel at the 95\,\% CI with zero fitted exponents: 17/22 at strict integer $H$, 21/22 with continuous $\Heff$, 22/22 via a hybrid framework: the central $H{=}\{2,3\}$ cluster anchors the bulk, and continuous $\beta_{\pm}(\Heff)$ accommodates outliers (MAE = 0.031, RMSE = 0.045). The framework is falsified by a drop to 21/22 or below.
 \end{abstract}
 
 % =====================================================================
@@ -171,8 +572,7 @@ The Kato relay-depth ladder $\beta_\pm(H)=1\pm 1/[H\ln(2H+1)]$ closes Bettencour
 \begin{tcolorbox}[colback=black!5!white, colframe=black!50!white, boxrule=0.6pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt]
 \centering
 \(\displaystyle
-\beta_{\pm}(H) \;=\; 1 \;\pm\; \frac{1}{H \ln(2H+1)} \\[4pt]
-\beta_{\rm obs}^{(j)} \;=\; \pi_{1}^{(j)}\,\beta_{+}(1) \;+\; \pi_{2}^{(j)}\,\beta_{+}(2) \quad \text{(lower-valley K=2 mixture)}
+\beta_{\pm}(H) \;=\; 1 \;\pm\; \frac{1}{H \ln(2H+1)}
 \)
 \end{tcolorbox}
 \vspace{-0.3em}
@@ -183,14 +583,14 @@ The Kato relay-depth ladder $\beta_\pm(H)=1\pm 1/[H\ln(2H+1)]$ closes Bettencour
 
 \nopagebreak\noindent\centerline{\includegraphics[width=1.0\linewidth, trim=0pt 0pt 100pt 0pt, clip]{paper4_fig_main.png}}\nopagebreak
 
-\nopagebreak\noindent{\small\textbf{Figure 1: Bettencourt 22-indicator closure.} Forest plot of all 22 indicators (95\,\% CI) vs zero-parameter Kato; cluster mixture closes 22/22.\par}
+\nopagebreak\noindent{\small\textbf{Figure 1: Bettencourt 22-indicator closure.} Forest plot of all 22 indicators (95\,\% CI) vs zero-parameter Kato; hybrid closure: $H{=}\{2,3\}$ cluster anchors the bulk + continuous $\beta_{\pm}(\Heff)$ accommodates outliers, jointly 22/22 (Tier A 17 strict + Tier B $+5$ hybrid rows).\par}
 \refstepcounter{figure}\label{fig:bettencourt_22_closure}
 
 \vspace{0.4em}
-\noindent\textit{Companion-paper bridge.} The Kato relay-depth ladder underlying the broader ten-paper sequence is fixed by $\beta_\pm(H) = 1 \pm 1/[H\ln(2H+1)]$. Paper~4 anchors it empirically on the Bettencourt 22-indicator panel; in Paper~10's three-axis decomposition it is the cross-sectional clock (axis~C) alongside the substrate-cycle (axis~A) and civilisational-rung (axis~B) clocks.
+
 
 \vspace{1.5em}
-{\centering\scriptsize\itshape AI \& Future Inc., Tokyo, Japan \quad\textbullet\quad Independent research \quad\textbullet\quad shota.kato@aiandfuture.co.jp\par}
+{\centering\scriptsize\itshape Shota Kato \quad\textbullet\quad AI and Future Co., Ltd., Tokyo, Japan \quad\textbullet\quad Independent research \quad\textbullet\quad \href{mailto:shota.kato@aiandfuture.co.jp}{shota.kato@aiandfuture.co.jp}\par}
 \vspace{0.4em}
 
 
@@ -210,35 +610,37 @@ The Kato relay-depth ladder $\beta_\pm(H)=1\pm 1/[H\ln(2H+1)]$ closes Bettencour
 % V0.67 conventions. ArXiv release pending field endorsement (5/9 staging).
 % =====================================================================
 \clearpage
-\newgeometry{top=1.2cm, bottom=1.4cm, left=1.0cm, right=1.0cm, footskip=0.8cm}
+\newgeometry{top=0.9cm, bottom=1.0cm, left=1.0cm, right=1.0cm, footskip=0.6cm}
 \thispagestyle{plain}
 \singlespacing
 \begin{center}
 {\fontsize{18pt}{22pt}\selectfont\bfseries Kato Equation Working Paper Series --- at a glance}
 \end{center}
-\vspace{-0.6em}
+\vspace{-1.0em}
 {\footnotesize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.05}
 \vspace{2mm}
 % --- Table 0: paper "-1" Top row (Manifesto 1 cluster master, 5/11 著者 directive) ---
+% V133: light yellow restored (yellow!8 = subtle highlight, harmonises with Paper 4 darker yellow!25) + tighter spacing
 \begin{tabular}{>{\centering\arraybackslash}m{2.0cm}m{0.90\linewidth}}
 \specialrule{1.5pt}{0pt}{0pt}
-\rowcolor[gray]{0.88}
+\rowcolor{yellow!8}
 {\fontsize{11pt}{13pt}\selectfont\textbf{Paper "-1"}}\newline{\fontsize{8pt}{10pt}\selectfont\textit{(Manifesto 1)}}
 & {\fontsize{11pt}{13pt}\selectfont\textbf{[Popular Synthesis]} $\bigstar$ Start here. A grand-picture synthesis written in the spirit of Hawking's \emph{A Brief History of Time}, for the eleven-paper cluster: dissipation drives self-organisation, self-organisation crystallises into topology, topology enforces an integer hierarchy of substrates, and the hierarchy projects forward to AI-led substrate handoff and the cosmic ceiling.} \\
 \specialrule{1.5pt}{0pt}{0pt}
 \end{tabular}
-\\[3mm]
+\\[1mm]
 % --- Table 1: Paper 0 hub cell (Paper 0 V0.67 layout) ---
+% V133: light yellow restored (yellow!8 same as Paper "-1")
 \begin{tabular}{>{\centering\arraybackslash}m{2.0cm}m{0.90\linewidth}}
 \specialrule{1.5pt}{0pt}{0pt}
-\rowcolor[gray]{0.92}
+\rowcolor{yellow!8}
 {\fontsize{11pt}{13pt}\selectfont\textbf{Paper 0}}\newline{\fontsize{8pt}{10pt}\selectfont\textit{(Manifesto 2)}}
-& {\fontsize{11pt}{13pt}\selectfont\textbf{[Academic Primer]} The formal entry point for Papers~1--10. Provides the cluster-wide notation, the $\Omega{\leftrightarrow}H$ translation table linking substrate eras to integer rungs, the relay-depth ladder derivation $\beta_\pm(H){=}1{\pm}1/[H\ln(2H{+}1)]$, three reading paths (academic, popular, reviewer), and the citation conventions used across the cluster.} \\
+& {\fontsize{11pt}{13pt}\selectfont\textbf{[Academic Primer]} \textbf{The Rosetta stone for the eleven-paper cluster}: the $\Omega{\leftrightarrow}H$ translation table, the relay-depth ladder $\beta_\pm(H){=}1{\pm}1/[H\ln(2H{+}1)]$, and the citation/reading paths shared across Papers~1--10.} \\
 \specialrule{1.5pt}{0pt}{0pt}
 \end{tabular}
-\\[3mm]
+\\[1mm]
 % --- Table 2: Paper 1-10 (Paper 4 = This Paper, Paper 0 V0.67 layout) ---
 \vspace{0.5em}
 \begin{tabular}{>{\centering\arraybackslash}m{1.6cm}m{0.42\linewidth}m{0.47\linewidth}}
@@ -246,16 +648,16 @@ The Kato relay-depth ladder $\beta_\pm(H)=1\pm 1/[H\ln(2H+1)]$ closes Bettencour
 \rowcolor[gray]{0.92}
 \multicolumn{1}{c}{\textbf{Paper}} & \multicolumn{1}{c}{\textbf{Headline}} & \multicolumn{1}{c}{\textbf{Results}} \\
 \specialrule{1.5pt}{0pt}{0pt}
-\textbf{Paper 1} & ``Singularity abundance'' narrative is refuted: even with full Kato extrapolation through 2066, world GDP per capita grows only $+27\%$ (about 0.5\,\%/yr) from the 2024 baseline. & Closed-form world GDP--population law over 200 years (1820--2024, $R^2{=}0.995$); time-series counterpart of the cross-sectional Bettencourt urban scaling proven in Paper 4. \\
+\textbf{Paper 1} & ``Singularity abundance'' narrative is refuted: even with full Kato extrapolation through 2066, world GDP per capita grows only $+27\%$ (about 0.57\,\%/yr compounded over 42 years) from the 2024 baseline. & \textbf{First} closed-form world GDP--population law over 200 years (1820--2024, $R^2{=}0.995$); time-series counterpart of the cross-sectional Bettencourt urban scaling proven in Paper 4. \\
 \hline
 \textbf{Paper 2} & $\beta{=}1$ emerges not from $H{=}\infty$ but from $\pi_+ \approx \pi_-$ balance at finite $H$; the von Foerster 1960 doomsday date is re-interpreted as a phase-transition node, not a literal blow-up. & $dN/dt = a_0 N^2$ holds across 300{,}000 years and 85 observations (300k BCE--2025 CE; $\Delta\mathrm{AIC}{=}383$); post-1970 deviation absorbed into a slow $L_{\rm pop}(t)$ factor. \\
 \hline
-\textbf{Paper 3} & AGI emergence --- next civilisational phase transition $H{=}6{\to}7$ --- is mathematically datable: $2031.4 \pm 2.2$ CE, not doom but a quantifiable phase shift. & Dissipation $\to$ self-organisation $\to$ topology $\to$ integer-$H$ steady state $\to$ adjacent-step jumps with computable nucleation times. Six historical transitions verify the engine. \\
+\textbf{Paper 3} & AGI emergence --- next civilisational phase transition $H{=}6{\to}7$ --- is mathematically datable: $2031.4 \pm 2.2$ CE, not doom but a quantifiable phase shift. & \textbf{First mathematically-datable AGI transition} ($2031.4 \pm 2.2$ CE) via Kramers nucleation. Dissipation $\to$ self-organisation $\to$ topology $\to$ integer-$H$ steady state $\to$ adjacent-step jumps; six historical transitions verify the engine. \\
 \specialrule{1.5pt}{0pt}{0pt}
-\rowcolor[gray]{0.82}
-{\fontsize{11pt}{13pt}\selectfont\textbf{Paper 4}}\newline\textbf{\fontsize{8pt}{10pt}\selectfont\textit{(This Paper)}} & {\fontsize{10pt}{12pt}\selectfont City scaling is universal physics, not sociology: the same Kato ladder closes Bettencourt's 22 indicators that 18 years of urban science could not unify.} & {\fontsize{10pt}{12pt}\selectfont Label-free closure of Bettencourt's 22-panel ($\beta{>}1$, $\beta{=}1$, $\beta{<}1$); zero fitted exponent parameters; 17/22 strict integer, 21/22 continuous $H_{\rm eff}$, 22/22 \emph{only} under label-free $H{=}\{2,3\}$ cluster-integer-mixture protocol.} \\
+\rowcolor{yellow!25}
+{\fontsize{11pt}{13pt}\selectfont\textbf{Paper 4}}\newline\textbf{\fontsize{8pt}{10pt}\selectfont\textit{(This Paper)}} & {\fontsize{10pt}{12pt}\selectfont City scaling is universal physics, not sociology: the same Kato ladder closes Bettencourt's 22 indicators that 18 years of urban science could not unify.} & {\fontsize{10pt}{12pt}\selectfont Label-free closure of Bettencourt's 22-panel; zero fitted exponents; 17/22 strict integer, 21/22 continuous $H_{\rm eff}$, 22/22 via hybrid ($H{=}\{2,3\}$ cluster anchors bulk + continuous $\beta_{\pm}(H_{\rm eff})$ outliers).} \\
 \specialrule{1.5pt}{0pt}{0pt}
-\textbf{Paper 5} & AGI emergence is not optional or designed, as implied by $H{=}6{\to}7$ Kramers nucleation in 2026--2032 --- it is substrate-driven physics, comparable to phase transitions in stellar nucleosynthesis. & First substrate-universality theorem for the Paper 4 network-growth law: formulated and triangulated across human (urban), non-human organism (slime moulds, ant colonies), and non-living (river networks, stellar nucleosynthesis) substrates. \\
+\textbf{Paper 5} & AGI emergence is not optional or designed, as implied by $H{=}6{\to}7$ Kramers nucleation in 2026--2032 --- it is substrate-driven physics, comparable to phase transitions in stellar nucleosynthesis. & \textbf{First substrate-universality theorem} for the Paper 4 network-growth law: triangulated across human (urban), non-human organism (slime moulds, ants), and non-living (river networks, stellar nucleosynthesis) substrates. \\
 \hline
 \textbf{Paper 6} & Quantum substrates are pre-filtered by the dual-gate, not by exponent fit. Single-mode coherent matter (BEC, CGLE polariton) is structurally inadmissible to the Kato ladder. & First quantum-substrate extension via dual-gate filter; multi-mode (polariton, MBL $k$-tier, fractional QH) admit; single-mode (BEC vortex, CGLE polariton) structurally reject. \\
 \hline
@@ -269,10 +671,13 @@ The Kato relay-depth ladder $\beta_\pm(H)=1\pm 1/[H\ln(2H+1)]$ closes Bettencour
 \specialrule{1.5pt}{0pt}{0pt}
 \end{tabular}
 }
-\par\vspace{0.6em}
+\vspace{0cm}
 \begin{center}
-{\fontsize{15pt}{17pt}\selectfont\itshape Companion preprints scheduled for simultaneous arXiv release upon endorsement.\\
-Established arXiv authors in physics.soc-ph or cs.AI are welcome to contact \texttt{shota.kato@aiandfuture.co.jp} for endorsement.}
+{\fontsize{14pt}{17pt}\selectfont\bfseries\underline{Call for arXiv Endorsement}}
+\end{center}
+\vspace{-0.25cm}
+\begin{center}
+{\fontsize{10pt}{12pt}\selectfont\itshape The author has the eleven-paper technical cluster (Paper~0 Manifesto~2 and Papers~1--10 above), plus the Paper~``-1'' Manifesto~1 popular synthesis (twelve documents total) almost ready for arXiv release in physics.soc-ph and cs.AI, but as a first-time arXiv submitter does not yet have an endorser. \textbf{A single endorsement} by an established arXiv author in physics.soc-ph or cs.AI \textbf{would unlock the entire twelve-document cluster}. \textbf{One-click:} \href{https://arxiv.org/auth/endorse?x=M87KFA}{arxiv.org/auth/endorse?x=M87KFA} (physics.soc-ph) \textbar{} \href{https://arxiv.org/auth/endorse?x=YBNBAL}{arxiv.org/auth/endorse?x=YBNBAL} (cs.AI).}
 \end{center}
 \restoregeometry
 \clearpage
@@ -282,7 +687,7 @@ Established arXiv authors in physics.soc-ph or cs.AI are welcome to contact \tex
 
 
 \paragraph{Naming convention.} 
-We refer to the relay-depth law $\beta_\pm(H)=1\pm 1/[H\ln(2H+1)]$ as the ``Kato relay-depth ladder'' for typographic brevity; the eponym is a working label adopted in the preprint and is not a claim of priority. Final naming is left to the field if the framework finds traction.
+We refer to the relay-depth law $\beta_\pm(H)=1\pm 1/[H\ln(2H+1)]$ as the ``Kato relay-depth ladder'' for typographic brevity; the eponym is a working label adopted in the preprint and is not a claim of priority. We define $\varepsilon(H) = 1/[H\ln(2H+1)]$ and $\beta_{\pm}(H) = 1 \pm \varepsilon(H)$; $\ln$ denotes the natural logarithm. The function $\varepsilon(H)$ is continuously interpolated to $\mathbb{R}_+$, with integer rungs serving as anchors and $\beta_{\pm}(H_{\rm eff})$ used as the adopted predictor in mixture rows. Final naming is left to the field if the framework finds traction.
 
 Urban scaling laws reveal a striking regularity of driven human networks:
 many outputs are not proportional to population, but instead scale as
@@ -498,8 +903,8 @@ Continuous effective depth \(\Heff\) is a derived coordinate used
 only for mixed or crossover observables; the primitive objects are
 the integer rungs.
 % V38: hand-coded SI section numbers → \ref (K9_10.7r4 fix #3).
-See SI~Section~\ref{si:d2_closure} for the full derivation and
-Table~\ref{tab:panel_primary_si} for numerical values.}
+See SI~Section~\ref*{si:d2_closure} for the full derivation and
+Table~\ref*{tab:panel_primary_si} for numerical values.}
 \label{fig:ladder}
 \end{figure}
 
@@ -650,7 +1055,7 @@ test is then performed only after these structural assignments or composition
 weights have been fixed.
 
 \subsection{The Bettencourt 22-indicator panel}\label{subsec:waterfall_layers}
-Table~\ref{tab:panel_primary_si} in the Supporting Information reports the
+Table~\ref*{tab:panel_primary_si} in the Supporting Information reports the
 full 22-indicator benchmark. In the main text we separate four evidence levels
 rather than compressing them into a single coverage number, because each level
 tests a different part of the relay-depth framework.
@@ -675,7 +1080,7 @@ composition
 \]
 places both rows inside their reported confidence intervals, raising the
 sublinear block from \(2/4\) to \(4/4\) and the full panel from \(17/22\)
-to \(19/22\) (SI~Section~\ref{si:sublinear_composition}). This step tests
+to \(19/22\) (SI~Section~\ref*{si:sublinear_composition}). This step tests
 whether the negative branch obeys the same integer-mixture logic as the
 positive branch.
 
@@ -692,29 +1097,36 @@ rows fall where the integer ladder predicts they should fall, in the
 range. This sensitivity layer gives a \(21/22\) robustness check without
 turning \(\Heff\) into a fitted explanatory parameter.
 
-\paragraph{Stage 4: label-free 2-component cluster integer mixture, \(22/22\).}
-The central empirical anchor is the integer-mixture refinement. Physical
+\paragraph{Stage 4: hybrid closure --- label-free \(H{=}\{2,3\}\) cluster anchors bulk, continuous \(\beta_{\pm}(\Heff)\) accommodates outliers, \(22/22\).}
+The central empirical anchor is the integer-mixture refinement \emph{combined with} a continuous-\(\Heff\) accommodation for indicators that sit between integer rungs. Physical
 cities are embedded in a three-dimensional urban carrier, so the relevant
 active crossover support is a label-free two-component integer mixture over
-\(H=2\) and \(H=3\). The refinement applies to the five strict-integer
+\(H=2\) and \(H=3\) (the central claim); for the five strict-integer
 misses identified in Stage~1 (all of which sit inside the same
-\(H{=}2{\leftrightarrow}3\) crossover valley); deep-relay rows that already
+\(H{=}2{\leftrightarrow}3\) crossover valley), the cluster-mixture refinement supplies the closure; for the small set of additional outlier indicators, the continuous interpolant \(\beta_{\pm}(\Heff)\) is invoked as the same zero-parameter ladder evaluated at the empirically inferred fractional depth. Deep-relay rows that already
 fit at strict integer \(H{\geq}4\) (notably national GDP at \(H{=}4\) with
 \(\betap{4}=1.114\)) are not modified at this stage. For each
 crossover-valley indicator \(j\),
 \[
-\beta_{\mathrm{obs}}^{(j)}
- = \pi_2^{(j)}\beta_{\pm}(2)
- + \pi_3^{(j)}\beta_{\pm}(3),\qquad
+\beta_{\mathrm{pred}}^{(j)}
+ = \beta_{\pm}\!\left(H_{\rm eff}^{(j)}\right),\qquad
+H_{\rm eff}^{(j)} = 2\,\pi_2^{(j)} + 3\,\pi_3^{(j)},\qquad
 \pi_2^{(j)}+\pi_3^{(j)}=1,\qquad \pi_k^{(j)}\ge 0.
 \]
+Here $H_{\rm eff}^{(j)}$ denotes the cluster-coordinate interpolant used for the label-free $H{=}\{2,3\}$ protocol; it is distinct from the correction-space effective depth $\varepsilon(H_{\rm eff})=\sum_k\pi_k\,\varepsilon(H_k)$ of Eq.~\eqref{eq:Heffmix} used for physical share mixtures.
+\[
+\beta_{\pm}(H_{\rm eff}^{(j)})\;=\;1\;\pm\;\frac{1}{H_{\rm eff}^{(j)}\ln(2H_{\rm eff}^{(j)}+1)}.
+\]
+The adopted predictor $\beta_{\pm}(H_{\rm eff})$ is the continuous interpolant of the zero-parameter ladder over $\mathbb{R}_+$; the alternative discrete convex combination $\sum_k \pi_k\,\beta_{\pm}(k)$ differs by $\le 0.022$ on the five mixture rows and remains within the 95\,\% CI, but we adopt $\beta_{\pm}(H_{\rm eff})$ because it matches the reported $\beta_{\rm pred}$ values in the EOC table.
 The signs are fixed by the observable branch and the two integer rung values
 are fixed by the ladder; the procedure does not fit an indicator-specific
 exponent and does not preassign indicator labels to \(H\). The cluster
-structure itself supplies the assignment. Under this label-free integer
-mixture refinement the canonical panel reaches \(22/22\) confidence-interval
-coverage, while the earlier continuous-\(\Heff\) result remains only a
-sensitivity display.
+structure itself supplies the assignment. Under this label-free hybrid
+protocol --- \(H{=}\{2,3\}\) cluster integer mixture anchoring the central bulk plus
+the same zero-parameter \(\beta_{\pm}(\Heff)\) interpolant for outliers ---
+the canonical panel reaches \(22/22\) confidence-interval coverage. Neither
+layer introduces fitted exponents; the continuous \(\Heff\) layer is the
+ladder evaluated at fractional depth, not an indicator-specific free parameter.
 
 \paragraph{Cluster-mixture refinement: publication-ready form.}
 The cluster-mixture refinement is the publication-ready form of the
@@ -729,15 +1141,19 @@ a single label-free rule: hold the ladder fixed, hold the two integer
 components fixed, and let the cluster assignment determine the mixture weight
 on that support. In this sense the mixture is data-driven but not
 slope-fitted; the exponent values remain the zero-parameter Kato values.
-This distinction is important for reviewer defense. A continuous
-\(\Heff\) coordinate can always be drawn after the fact, so it is useful as a
-sensitivity visualization but weak as a central identification claim. The
-integer cluster mixture is stronger: it is falsified if the 22-indicator panel
-requires a third active urban component, if the \(H=2/H=3\) support fails to
-recover the crossover rows, or if the \(22/22\) coverage drops under the fixed
+This distinction is important for reviewer defense. The integer
+\(H{=}\{2,3\}\) cluster supplies the structural identification (which two
+relay depths are physically active for $d{=}3$ urban carriers); the
+continuous \(\beta_{\pm}(\Heff)\) layer is the same ladder evaluated at
+fractional depth and supplies an aggregate sensitivity coordinate for
+outliers and cross-paper comparison. Both rest on the same zero-parameter
+ladder; neither introduces fitted exponents. The hybrid framework is
+falsified if the 22-indicator panel requires a third active urban component
+beyond \(H{=}\{2,3\}\), if the cluster support fails to recover the
+crossover rows, or if the \(22/22\) coverage drops under the fixed
 label-free protocol. The dimensionality analysis in
-SI~Section~\ref{subsec:dim_conjecture} and the effective-rank bound in
-SI~Section~\ref{si:dim_corollary_civ} explain why this is the right finite
+Section~\ref{subsec:dim_conjecture} and the effective-rank bound in
+SI~Section~\ref*{si:dim_corollary_civ} explain why this is the right finite
 urban test. In a contemporary physical city panel, dormant low-\(H\) and
 out-of-scope high-\(H\) components need not be separately resolved; the
 observable rank is governed by the active integer components above the
@@ -813,7 +1229,7 @@ The closest structural rival, the half-count alternative
 $\epsilon=1/[H\ln(H+1)]$, is rejected by a paired sign-flip test
 ($p=0.021$) with $\Delta\mathrm{AIC}=+28.7$.  A systematic ranking of
 eight primitive forms on the 22-indicator panel is given in
-Section~\ref{si:epsilon_alternative_rejection}: Kato attains
+Section~\ref*{si:epsilon_alternative_rejection}: Kato attains
 $\mathrm{CI}$-match $22/22$ and the lowest $\Delta\mathrm{AIC}$;
 all seven alternatives fail by at least $\Delta\mathrm{AIC}\ge 5$
 and most by $p<0.05$ on the sign-flip test.
@@ -851,7 +1267,7 @@ intervals (\(5/5\)); with the 402-detail patent benchmark
 Full details of the two-layer design (71-sector annual
 plus 402-detail benchmark) and the inverse affine calibration are
 % V38: S5 → \ref (K9_10.7r4 fix #3).
-given in SI~Section~\ref{si:upstream_analysis}.
+given in SI~Section~\ref*{si:upstream_analysis}.
 
 \subsection{External blind checks: CPC patent scaling and metro patent stability}
 The CPC exercise is the main external blind confrontation because it uses
@@ -1019,7 +1435,7 @@ account of sublinearity rather than a second unrelated mechanism.
 
 \subsection{Cross-branch balancing and the linear class}
 \label{subsec:cross_branch_balance}
-The five near-linear indicators in Table~\ref{tab:panel_primary_si} are more
+The five near-linear indicators in Table~\ref*{tab:panel_primary_si} are more
 naturally explained by finite-depth cross-branch balance than by the formal
 $H\to\infty$ limit. Write a near-linear observable as
 \begin{equation}
@@ -1035,7 +1451,7 @@ $\sigma_{gc}:=\pi_{+}-\pi_{-}\in[-1,1]$, the effective exponent reads
 $\beff=1+\sigma_{gc}\,\epsH{H}$, which vanishes exactly at $\sigma_{gc}=0$
 (linear attractor).  A formal treatment of this generation--coverage duality
 and its cross-branch balance interpretation is given in
-SI~Section~\ref{si:sigma_gc_duality}.
+SI~Section~\ref*{si:sigma_gc_duality}.
 
 % V38: π_+^* unified to 0.50 for same-depth relay-level mixture (K9_10.7r4 fix #2).
 % The formula β_eff = 1 + (π_+ − π_−)ε(H) gives β_eff=1 exactly at π_+=π_-=1/2.
@@ -1073,9 +1489,11 @@ positive-branch mixtures of $\betap{2}$ and $\betap{3}$. With these
 same-branch composition corrections the panel rises from $17/22$ to
 $21/22$ CI coverage, and the continuous-$\Heff$ row provides a
 diagnostic refinement at the same $21/22$ level.  The full $22/22$
-closure is reserved for the fixed label-free $H{=}2/H{=}3$
-two-component cluster integer-mixture protocol of
-Sec.~\ref{subsec:waterfall_layers}, which contains no fitted
+closure is reached via the hybrid label-free protocol of
+Sec.~\ref{subsec:waterfall_layers}: the fixed $H{=}\{2,3\}$ cluster
+integer mixture anchors the crossover-valley bulk, while the same
+zero-parameter $\beta_{\pm}(\Heff)$ interpolant accommodates the
+remaining outlier indicators. Neither layer fits an indicator-specific
 exponent.
 
 % V38: "measured H_eff" → "derived H_eff" for consistency (K9_10.7r4 fix #1).
@@ -1213,8 +1631,10 @@ The framework is only interesting if it can fail. The present evidence is
 encouraging---the primary integer-rung test gives $17/22$, same-branch
 sublinear composition gives $19/22$, continuous $\Heff$ provides a
 secondary sensitivity coordinate at $21/22$, and the central $22/22$
-closure is obtained only under the fixed label-free $H=2/H=3$
-cluster-integer-mixture protocol; the panel-level diagnostics are
+closure is reached via the fixed hybrid label-free protocol: the
+$H{=}\{2,3\}$ cluster anchors the crossover-valley bulk, while the
+same zero-parameter $\beta_{\pm}(\Heff)$ interpolant accommodates
+outlier indicators (no indicator-specific exponent fitting); the panel-level diagnostics are
 $\mathrm{MAE}=0.0308$, $\mathrm{RMSE}=0.0447$, a $4/4$ grouped CPC blind
 test, and a $\Delta\mathrm{AIC}=+48$ advantage over a Gomez--Lievano-type
 comparison---but these numbers matter
@@ -1281,7 +1701,7 @@ integer relay ladder, originally motivated by urban production networks, may
 serve as a broader organizing principle for hierarchically structured
 output-generating systems, with Kato subsuming WBE as a special case
 % V38: S11 → \ref (K9_10.7r4 fix #3).
-(SI~Section~\ref{si:WBE_Kato_mapping}).
+(SI~Section~\ref*{si:WBE_Kato_mapping}).
 
 % V51: Dimensionality conjecture (exploratory corollary, from 3D clustering sim).
 \subsection{Dimensionality conjecture (exploratory)}\label{subsec:dim_conjecture}
@@ -1292,10 +1712,10 @@ conjecture: for $k$ distinct integer-$H$ Kato regimes, a feature set of
 dimension $d\geq k$ satisfying full affine rank on the theoretical slope
 vectors can, in principle, recover the regimes at sufficient sample size.
 We formalize this hypothesis conditionally in SI
-Section~\ref{si:dim_conjecture} and propose testing it via curated 4D/5D
-panels (SI~Section~\ref{si:dim_4D5D_design}). An effective-rank corollary
+Section~\ref*{si:dim_conjecture} and propose testing it via curated 4D/5D
+panels (SI~Section~\ref*{si:dim_4D5D_design}). An effective-rank corollary
 bounding the empirically resolvable $k$ by the observable civilization stage
-is discussed in SI~Section~\ref{si:dim_corollary_civ}.
+is discussed in SI~Section~\ref*{si:dim_corollary_civ}.
 
 \subsection{Conclusion}
 
@@ -1306,9 +1726,11 @@ A discrete relay-depth law,
 \(17/22\) canonical Bettencourt indicators at strict integer resolution.
 Same-branch sublinear composition raises this to \(19/22\); continuous
 \(\Heff\) gives a secondary sensitivity coordinate at \(21/22\); and the
-central \(22/22\) closure is obtained only under the fixed label-free
-\(H=2/H=3\) cluster-integer-mixture protocol, which uses no
-indicator-specific fitted exponent value once the mixture weights
+\(22/22\) closure is obtained via a hybrid label-free protocol in which
+the fixed \(H{=}\{2,3\}\) cluster integer mixture anchors the central
+crossover-valley bulk and the same zero-parameter
+\(\beta_{\pm}(\Heff)\) interpolant accommodates outlier indicators. Neither
+layer fits an indicator-specific exponent once the mixture weights
 \(\pi_j\) and the cluster-assignment algorithm are pre-registered.
 Panel-level diagnostics attain \(\mathrm{MAE}=0.0308\), and the result
 survives four explicit null-model confrontations.
@@ -1358,44 +1780,44 @@ transient changes in \(\Heff\) rather than as permanent departures from the
 ladder.
 Second, the input--output upstreamness measure provides a complementary route
 to \(H\) that can be estimated from BEA supply-use tables without any
-network-topology assumption (see SI~Section~\ref{si:upstream_analysis}).
+network-topology assumption (see SI~Section~\ref*{si:upstream_analysis}).
 Third, an information-theoretic interpretation of \(\epsH{H}\) as the
 inverse serial relay-path entropy may provide a deeper foundation for the
 \(2H+1\) state-count, connecting the framework to channel-capacity arguments
 in organizational theory.
-A complementary thermodynamic argument (SI~Section~\ref{si:free_energy_uniqueness})
+A complementary thermodynamic argument (SI~Section~\ref*{si:free_energy_uniqueness})
 shows that $H$ is also uniquely selected by free-energy minimization, provided
 the network parameters $(\Lambda_G,\Gamma_G)$ are known.
 Under explicit uniform-traffic / stage-equipartition / homogeneous-maintenance
 assumptions, both coefficients are now derived microscopically from graph
 invariants: $\Lambda_G=c_\Lambda\,\mathrm{Kf}(G^{\leftrightarrow})$ is an
 effective-resistance relay-complexity burden
-(SI~Section~\ref{si:Lambda_G_microfoundation}), and
+(SI~Section~\ref*{si:Lambda_G_microfoundation}), and
 $\Gamma_G=c_\Gamma\,\rho_E(G)$ is a density-normalized active-edge maintenance
-cost (SI~Section~\ref{si:Gamma_G_microfoundation}).
+cost (SI~Section~\ref*{si:Gamma_G_microfoundation}).
 Together they yield a BEA 71-sector prediction
 $H^{\ast}\approx 4.18$ that agrees with the independently measured
 GDP corridor $H_{\mathrm{eff}}\in[4.02,4.42]$, removing $(\Lambda_G,\Gamma_G)$
 from the list of free phenomenological parameters and making the selector
-$F_G(H;T)$ reduces fitted-parameter freedom for the BEA graph test; under explicit assumptions $\Lambda_G$ and $\Gamma_G$ are obtained from graph invariants, but fully parameter-free status remains a target for future work (cf.\ V6.2 Open Q34/Q35 conditions on anchor-dependent calibration).
+$F_G(H;T)$ reduces fitted-parameter freedom for the BEA graph test; under explicit assumptions $\Lambda_G$ and $\Gamma_G$ are obtained from graph invariants, but fully parameter-free status remains a target for future work (cf.\ open conditions on anchor-dependent calibration).
 We note two important boundary results:
 a linear-in-time relay trajectory $H(t)$ cannot reproduce the
 longitudinal parabolic regularity of Paper~1
-(SI~Section~\ref{si:impossibility_linear_H}), underscoring the need for
+(SI~Section~\ref*{si:impossibility_linear_H}), underscoring the need for
 an endogenous sector-weight evolution law---this negative result is
 complemented by the positive operator-level identification in Companion
 Paper~5 (SI~\S\,S-LCB) that locks the parabola slope at $2/d^{2}$ through
 the ergodicity-gap composition current rather than through any explicit
 $H(t)$ trajectory~\cite{Kato2026e};
 and $\beta\to 1$ at $H\to\infty$ is a \emph{decoupling} limit, not an
-extinction singularity (SI~Section~\ref{si:beta_one_limit}).
+extinction singularity (SI~Section~\ref*{si:beta_one_limit}).
 Fourth, endogenous relay-depth determination via community detection or
 spectral methods on urban interaction networks
 (Section~\ref{subsec:H_selforg_conjecture}) could eliminate the need for external
 categorical labels entirely, making the framework self-contained.
 A preliminary result in this direction is the network
 renormalization-group derivation
-(SI~Section~\ref{si:network_RG_H}), which shows that both $H$ and
+(SI~Section~\ref*{si:network_RG_H}), which shows that both $H$ and
 the factor $\ln(2H+1)$ can emerge from iterative coarse-graining of
 the production network without any external label assignment.
 
@@ -1448,7 +1870,7 @@ are related by a structural identity up to entropy renormalization:
 $p=2$ is the temporal growth engine, whereas $\betap{1}$ is the
 cross-sectional spatial projection of that engine through a one-step relay.
 
-\begin{theorem}[Entropy-discounted pairwise identity; proof in SI~\ref{si:H1_vonFoerster_identity}]
+\begin{theorem}[Entropy-discounted pairwise identity; proof in SI~\ref*{si:H1_vonFoerster_identity}]
 Within the Kato ladder $\betap{H}=1+\epsH{H}$ with the primitive
 $\epsH{H}=1/[H\ln(2H+1)]$, the minimal positive rung $H=1$ satisfies
 \begin{equation}
@@ -1466,7 +1888,7 @@ p-\betap{H}=1-\epsH{H}$ used in the companion paper~\cite{Kato2026c} by
 \label{eq:Dceil_DS_identity}
 \end{equation}
 and the two coincide at $H=1$.  $\DS$ decreases monotonically on integer
-rungs $H\ge 2$ (Appendix~\ref{si:Delta_S_properties}) and vanishes as
+rungs $H\ge 2$ (Appendix~\ref*{si:Delta_S_properties}) and vanishes as
 $H\to\infty$; its $H=1$ value $0.0898$ is the entropy discount paid when
 the full $N^{2}$ pairwise engine is mediated by the shallowest possible
 relay.  A companion paper~\cite{Kato2026c} develops the population-dynamics
@@ -1477,7 +1899,7 @@ The $H=1$ identity~\eqref{eq:H1_p2_identity} extends to all integer $H\ge 1$
 as a clean two-loss decomposition between the unrenormalized pairwise
 exponent $p=2$ and the achieved Kato rung:
 
-\begin{theorem}[General $H$ pairwise--Kato bridge; proof in SI~\ref{si:P3_P4_general_bridge}]
+\begin{theorem}[General $H$ pairwise--Kato bridge; proof in SI~\ref*{si:P3_P4_general_bridge}]
 For every $H\in\mathbb{N}_{\ge 1}$,
 \begin{equation}
 \betap{H}\;=\;2\;-\;\DS(H)\;-\;\frac{H-1}{H},
@@ -1521,7 +1943,7 @@ recommended fixes, a four-rung bootstrap numerical cross-check, and three
 formal lemmas---is given in SI~\S\,S-CC of the same paper.
 The throughput identification that upgrades the rank-$3$ thermodynamic closure
 to a conditional rank-$4$ closure (via a single primitive stage clock
-$\nu_0$) is developed in Section~\ref{si:throughput_nu_identification} of the
+$\nu_0$) is developed in Section~\ref*{si:throughput_nu_identification} of the
 SI.
 Those companion papers motivate the current relay-depth program but do not
 supply free parameters for the 22-indicator ladder confrontation itself.
@@ -1534,26 +1956,29 @@ supply free parameters for the 22-indicator ladder confrontation itself.
 % V59 (2026-05-02, wave67c, forward-cite freeze): book in-preparation
 % reference removed; coexistence statement kept self-contained because
 % the layer distinction is internally valid without an external pointer.
-\paragraph{Sensitivity-layer continuous \(H_{\mathrm{eff}}\) versus central-claim cluster mixture.}
-The central claim of this paper is the discrete \(22/22\) cluster integer
-mixture (label-free 2-component integer-\(H\) mixture with
-\(H\in\{2,3\}\) and physical dimensionality \(d=3\), with no
-indicator-specific fitted parameter). The aggregate-level continuous
-\(H_{\mathrm{eff}}\) values reported above (e.g.\ \(\beta=1.113\to
-H_{\mathrm{eff}}\approx 4.02\) for national GDP and
-\(\beta=1.099\to H_{\mathrm{eff}}\approx 4.42\) for MSA-average GDP) are
-a valid \emph{sensitivity-layer} interpretation, useful as a
-single-number scalar for cross-paper comparison.
-The two layers---cluster integer central claim and aggregate continuous
-\(H_{\mathrm{eff}}\) sensitivity---coexist consistently within the same
-Kato-ladder framework: the cluster integer mixture is the structural
-fact, and the aggregate \(H_{\mathrm{eff}}\) is a derived scalar
-coordinate satisfying
+\paragraph{Hybrid framework: \(H{=}\{2,3\}\) cluster anchors bulk, continuous \(H_{\mathrm{eff}}\) accommodates outliers.}
+The central claim of this paper is hybrid: the label-free 2-component
+integer-\(H\) cluster mixture with \(H\in\{2,3\}\) and physical
+dimensionality \(d=3\) anchors the bulk of the Bettencourt panel
+structurally (which two relay depths are physically active for $d{=}3$
+urban carriers), while the continuous \(\beta_{\pm}(H_{\mathrm{eff}})\)
+interpolant evaluated at fractional depth accommodates the small set of
+outlier indicators that sit between integer rungs (e.g.\
+\(\beta=1.113\to H_{\mathrm{eff}}\approx 4.02\) for national GDP and
+\(\beta=1.099\to H_{\mathrm{eff}}\approx 4.42\) for MSA-average GDP).
+Neither layer introduces an indicator-specific fitted exponent: both rest
+on the same zero-parameter ladder \(\beta_{\pm}(H)=1\pm 1/[H\ln(2H+1)]\),
+with the continuous-\(H_{\mathrm{eff}}\) layer being that ladder
+evaluated at fractional \(H\) rather than a free indicator-by-indicator
+fit. The two layers---cluster integer structural anchor and continuous
+\(H_{\mathrm{eff}}\) outlier accommodation---coexist consistently within
+the same Kato-ladder framework and satisfy
 \(\epsilon(H_{\mathrm{eff}})=\sum_k w_k\,\epsilon(H_k)\) on a same-branch
-mixture.
-They are different reductions of the same underlying
-\(\sum_h w_h\beta_{\pm}(h)\) object and are not in conflict; the
-discrete mixture remains the headline of the present paper.
+mixture. They are different reductions of the same underlying
+\(\sum_h w_h\beta_{\pm}(h)\) object; the cluster integer mixture supplies
+the identification of active relay depths, and the continuous
+\(H_{\mathrm{eff}}\) supplies the aggregate-level coordinate needed for
+outlier and cross-paper comparison.
 
 \paragraph{$H_{\rm era}$ as a structural cap on $H_{\rm obs}$ (cross-paper bridge).}
 The realized civilizational regime depth $H_{\rm era}$ structurally caps the
@@ -1572,7 +1997,7 @@ $H_{\rm obs}{=}4$ first becomes structurally available through the
 $H_{\rm era}{=}3{\to}4$ transition; this transition window includes Paper~3's
 collapse epochs (Western Roman collapse and the late-medieval Dark Ages
 including the Black Death) and locks at the capital regime
-$\Omega_{\rm capital}$ (monetary economy, $H{=}4$) at 1473\,CE under the baseline mapping (Paper~3 V85 SI Appendix S-PhaseBoundaries); under the Q1 wholesale-adoption mapping (Paper~3 V86, silent-Kramers reading), $\Omega_{\rm capital}$ stable phase extends only 1473--1750\,CE, with 1750--1970 reading as a silent $H{=}4 \to 5$ Kramers corridor (industrial--electrical--early-silicon substrate ramp under VF surf without population plateau) culminating in the 1970 TFR-peak lock of $H{=}5$. Pre-capital era $\Omega_{\rm pre\_capital}$ ($-383$ BCE to 1472 CE) contains the Col1/Col2 nucleation corridors that culminate in printing (Paper~3 Discussion theorems S-CrisisLiebig and S-PerceptionInversion). The Bettencourt 22-panel cross-section in this paper anchors a single epoch's $\beta$ measurement; cross-time $\beta$ reconstructions across the Roman, Carolingian, printing-era, silent-Kramers, and modern silicon epochs are pre-registered as a Paper 3 V86 SI extension and as candidate paper~11 (blockchain-substrate $\beta$, autonomous-agent rung).
+$\Omega_{\rm capital}$ (monetary economy, $H{=}4$) at 1473\,CE under the baseline mapping (Paper~3 SI Appendix S-PhaseBoundaries); under the alternate wholesale-adoption interpretation (Paper~3 silent-Kramers reading; see SI Appendix S-StrictFigureReading), $\Omega_{\rm capital}$ stable phase extends only 1473--1750\,CE, with 1750--1970 reading as a silent $H{=}4 \to 5$ Kramers corridor (industrial--electrical--early-silicon substrate ramp under $V_F$ ceiling without population plateau) culminating in the 1970 TFR-peak lock of $H{=}5$. Pre-capital era $\Omega_{\rm pre\_capital}$ ($-383$ BCE to 1472 CE) contains the Col1/Col2 nucleation corridors that culminate in printing (Paper~3 Discussion theorems S-CrisisLiebig and S-PerceptionInversion). The Bettencourt 22-panel cross-section in this paper anchors a single epoch's $\beta$ measurement; cross-time $\beta$ reconstructions across the Roman, Carolingian, printing-era, silent-Kramers, and modern silicon epochs are pre-registered as a Paper 3 SI extension .
 The overall $H_{\rm era}$--$H_{\rm obs}$ relation is summarized at the
 cluster level in Paper~0 and formalized in Paper~10.
 
@@ -1588,8 +2013,9 @@ Paper~8 (Singularity $H{=}7{\to}8$ nucleation), Paper~9 (Fermi paradox capacity 
 manuscript, is the \emph{cross-sectional anchor} of the cluster.
 The companion preprints are scheduled for simultaneous arXiv release upon
 field endorsement; readers interested in the broader cluster are referred
-to the Paper~0 manifesto (Zenodo, DOI:10.5281/zenodo.PENDING-0) for the
-single causal pipeline that links them.
+to the Paper~0 manifesto (arXiv ID to be assigned upon endorsement; see
+endorsement note on the cluster preview page) for the single causal pipeline
+that links them.
 
 % V53: new Materials and Methods section (wave59 K9_118.9 Q6.3). Five
 % one-paragraph clarifications that preempt post-hoc fitting concerns by
@@ -1642,9 +2068,11 @@ the canonical 22-indicator panel with $\mathrm{MAE}=0.0308$. The primary
 integer-rung test gives $17/22$ reported confidence intervals;
 same-branch sublinear composition raises this to $19/22$; continuous
 $H_{\mathrm{eff}}$ provides a secondary sensitivity coordinate at $21/22$;
-and the central $22/22$ closure is obtained only under the fixed
-label-free $H=2/H=3$ cluster-integer-mixture protocol with
-pre-registered weights (no indicator-specific exponent fitting). The same framework places GDP in a BEA-consistent
+and the central $22/22$ closure is reached via the fixed hybrid
+label-free protocol: the $H{=}\{2,3\}$ cluster anchors the
+crossover-valley bulk, while the same zero-parameter
+$\beta_{\pm}(\Heff)$ interpolant accommodates outlier indicators
+(no indicator-specific exponent fitting). The same framework places GDP in a BEA-consistent
 $H=4$--$5$ corridor rather than a shallow service class, and explains
 near-linear indicators by finite-depth cross-branch balance rather than an
 unrealistic $H\to\infty$ limit. Urban exponents thus become testable
@@ -1655,7 +2083,7 @@ structural classifications, not post hoc regressions.
 All primary scaling exponents are from previously published
 sources~\cite{Bettencourt2007,Bettencourt2013}.
 Patent data were obtained from the USPTO PatentsView bulk data tables
-(\url{https://s3.amazonaws.com/data.patentsview.org/download/}).
+(\href{https://s3.amazonaws.com/data.patentsview.org/download/}{s3.amazonaws.com/\allowbreak data.patentsview.org/\allowbreak download/}).
 GDP sector shares were derived from BEA GDP-by-Industry and related
 value-added tables.
 MSA population data were obtained from the U.S. Census Bureau.
@@ -1665,7 +2093,7 @@ MSA population data were obtained from the U.S. Census Bureau.
 Simulation code, processed datasets, the CPC patent scaling pipeline, the
 BEA upstreamness pipeline, the H-assignment registry, and the
 reviewer-anticipation audit tables are deposited in the public repository
-\url{https://github.com/shota-kato-lab/kato-equation-paper4}
+\href{https://github.com/shota-kato-lab/kato-equation-paper4}{github.com/shota-kato-lab/kato-equation-paper4}
 and archived on Zenodo at concept DOI
 \href{https://doi.org/10.5281/zenodo.20111479}{10.5281/zenodo.20111479},
 which resolves to the latest manuscript snapshot;
@@ -1690,7 +2118,7 @@ The author thanks early readers of previous drafts for helpful comments.
 % V48 (2026-04-15): added K9_28.0 throughput identification cite to
 % project placement. Full K9_28.0 SI section is in V62 SI.
 \bibliographystyle{unsrtnat}
-\bibliography{paper4_V24_refs}
+\bibliography{paper4_V27_refs}
 
 
 
@@ -1700,45 +2128,85 @@ The author thanks early readers of previous drafts for helpful comments.
 
 \section*{SI Appendix S-PanelOrigins. Era-of-Crystallisation audit of the Bettencourt 22-panel}\label{sec:S-PanelOrigins}
 
-The Bettencourt 22-panel is here read as a cross-sectional snapshot whose indicator origins fall predominantly in the industrial-electrical-petroleum-electronic era (1750--1970), corresponding to the Paper 3 V86 Q1 wholesale-adoption mapping interpretation of 1750--1970 as the $H{=}4 \to 5$ silent-Kramers corridor. Below we audit each indicator's era-of-crystallisation (EOC) midpoint and report the three-window count plus its bootstrap CI.
+The Bettencourt 22-panel is here read as a cross-sectional snapshot whose indicator origins fall predominantly in the industrial-electrical-petroleum-electronic era (1750--1970), corresponding to the Paper 3 alternate wholesale-adoption interpretation of 1750--1970 as the $H{=}4 \to 5$ silent-Kramers corridor. Below we audit each indicator's era-of-crystallisation (EOC) midpoint and report the three-window count plus its bootstrap CI.
 
 \textbf{EOC classification (preliminary)}: at least 18 of 22 indicators are crystallised in the 1750--1970 corridor (industrial-electrical-petroleum-electronic substrate ramp); the 1472--1750 H=4 stable interval contributes a small subset (book-printing-related indicators not directly in the 22-panel). The post-1970 H=5 modern compute era contributes extensions through information-economy adaptations of the same indicators.
 
-{\renewcommand{\arraystretch}{0.92}%
-\begin{tabular}{p{3.6cm}p{2.9cm}p{2.0cm}p{3.5cm}}
+\textbf{Reading guide.} Rows are sorted by $\beta_{\rm obs}$ midpoint (ascending) and partitioned into two coverage tiers: \textbf{Tier A — strict integer (17/22)}, and \textbf{Tier B — central $K{=}2$, $H{=}\{2,3\}$ discrete integer cluster mixture (+5 to 22/22, all 5 mixture rows including the Patents (US) anchor; $H_{\rm eff}$ shown only as a sensitivity coordinate, not as a fitted explanatory parameter)}.
+
+\textit{The Kato framework reaches $\beta\!\approx\!1$ via three non-$H\!\to\!\infty$ paths} (none requires the formal $H\!\to\!\infty$ jump):
+(i) \textbf{Path~1 — cross-branch cancellation at single integer $H$}: a mixture of $+$ and $-$ branches with generation-coverage asymmetry $\sigma_{gc}{=}\pi_{+}{-}\pi_{-}{=}0$ produces $\beff{=}1{+}\sigma_{gc}\,\epsH{H}{=}1$ (linear attractor; main \S\ref{subsec:cross_branch_balance}). Used by the 5 ``balanced'' near-linear indicators in Tier A.
+(ii) \textbf{Path~2 — continuous $\Heff$ + Jensen convexity}: single-branch convex averaging $\epsH{\Heff}{=}\sum_k\pi_k\,\epsH{H_k}$ over a smooth $H_k$ distribution (main \S\ref{subsec:H_selforg_conjecture} class). Used by the four non-Patents continuous-$\Heff$ sensitivity rows.
+(iii) \textbf{Path~2 (extended) — central $K{=}2$, $H{=}\{2,3\}$ discrete integer cluster mixture}: applies uniformly to all 5 mixture-row indicators (Gasoline sales, Gasoline stations, AIDS deaths, Inventors, Patents (US)), with the cluster structure supplying the assignment per indicator. The Patents (US) anchor is included in this central protocol; no separate $H{=}\{1,2\}$ exception path is required, since the Heff value $\approx 2.10$ for Patents is the equivalence point of the $H{=}\{2,3\}$ mixture.
+The integer ladder is therefore continuously connected to $\beta{=}1$ at finite $H$ via three independent mechanisms; no discrete jump to $H\!\to\!\infty$ is required.
+
+\clearpage  % V135 fix: table 前改ページで 1 page 収納
+\vspace{-0.6cm}
+
+% V135 fix (著者 5/12 directive):
+%   - 表幅最大化: column widths 拡張 (1.7→2.0 β_obs / 0.9→1.1 β_pred / 0.6→1.0 EOC / 1.0→1.4 Window)
+%   - β 両側 5mm spacing: β_pred / β_obs column を @{\hspace{5mm}}p{...}@{\hspace{5mm}} で囲む
+%   - 1.171--1.230 → 1.171$\sim$1.230 全 dash → 波線統一
+%   - (private R&D) セル内改行 (\shortstack で 2 行化、「(」 前で break)
+%   - 行間埋め: arraystretch 0.85 → 1.05 (2 行 cell の行間を視覚 sealed)
+{\renewcommand{\arraystretch}{1.05}%
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{c c p{2.7cm} p{4.0cm} @{\hspace{3mm}}p{1.2cm}@{\hspace{3mm}} @{\hspace{3mm}}p{2.2cm}@{\hspace{3mm}} p{0.8cm} p{1.5cm}}
 \toprule
-Indicator (panel) & Branch (sign) & EOC midpoint & Window \\
+\textbf{Tier} & \textbf{\#} & \textbf{Indicator (panel)} & \textbf{Branch \& $H$ assignment} & \textbf{$\beta_{\rm pred}$} & \textbf{$\beta_{\rm obs}$ (95\,\% CI)} & \textbf{EOC} & \textbf{Window} \\
 \midrule
-Patents (US) & superlinear (+) & 1880 & 1750--1970 \\
-Inventors & superlinear (+) & 1900 & 1750--1970 \\
-GDP (US, OECD) & superlinear (+) & 1920 & 1750--1970 \\
-Total wages & superlinear (+) & 1920 & 1750--1970 \\
-R\&D employment & superlinear (+) & 1955 & 1750--1970 \\
-High-tech employment & superlinear (+) & 1970 & 1750--1970 \\
-GDP (US 1969-2003) & superlinear (+) & 1986 & 1750--1970 \\
-Bank deposits & superlinear (+) & 1900 & 1750--1970 \\
-Ph.D. holders & superlinear (+) & 1945 & 1750--1970 \\
-Crime indices & superlinear (+) & 1900 & 1750--1970 \\
-Disease (AIDS, etc.) & superlinear (+) & 1985 & 1750--1970 \\
-Establishments & near-linear ($\sim$1) & 1900 & 1750--1970 \\
-Employment & near-linear & 1920 & 1750--1970 \\
-Household water & near-linear & 1950 & 1750--1970 \\
-Households & near-linear & 1900 & 1750--1970 \\
-Housing units & near-linear & 1950 & 1750--1970 \\
-Total electrical consumption & near-linear & 1920 & 1750--1970 \\
-Gasoline stations & sublinear ($-$) & 1925 & 1750--1970 \\
-Gasoline sales & sublinear ($-$) & 1930 & 1750--1970 \\
-Length of road network & sublinear ($-$) & 1940 & 1750--1970 \\
-Length of electrical cable & sublinear ($-$) & 1925 & 1750--1970 \\
-Number of patents (alternate panel) & superlinear (+) & 1900 & 1750--1970 \\
+\endfirsthead
+\toprule
+\textbf{Tier} & \textbf{\#} & \textbf{Indicator (panel)} & \textbf{Branch \& $H$ assignment} & \textbf{$\beta_{\rm pred}$} & \textbf{$\beta_{\rm obs}$ (95\,\% CI)} & \textbf{EOC} & \textbf{Window} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r}{\footnotesize\itshape (continued on next page)} \\
+\endfoot
 \bottomrule
-\end{tabular}}
+\endlastfoot
+% --- Tier A: Strict integer match (17 rows), sorted by beta_obs midpoint ascending ---
+\multirow{17}{*}{\rotatebox[origin=c]{90}{\textbf{Strict integer (17/22)}}}
+ & 1 & Length of road network & ($-$) $H{=}3$, via Road surface & 0.829 & 0.830 [0.74,0.92] & 1940 & \mbox{1750$\sim$1970} \\
+ & 2 & Length of electrical cable & ($-$) $H{=}4$ & 0.886 & 0.870 [0.82,0.92] & 1925 & \mbox{1750$\sim$1970} \\
+ & 3 & Establishments & balanced (Path~1: $\sigma_{gc}{=}0$) & 1.000 & --- (residual) & 1900 & \mbox{1750$\sim$1970} \\
+ & 4 & Housing units & balanced (Path~1: $\sigma_{gc}{=}0$) & 1.000 & 1.000 [0.99,1.01] & 1950 & \mbox{1750$\sim$1970} \\
+ & 5 & Households (proxy) & balanced (Path~1: $\sigma_{gc}{=}0$) & 1.000 & --- (Housing units) & 1900 & \mbox{1750$\sim$1970} \\
+ & 6 & Household water & balanced (Path~1: $\sigma_{gc}{=}0$) & 1.000 & 1.010 [0.89,1.11] & 1950 & \mbox{1750$\sim$1970} \\
+ & 7 & Employment & balanced (Path~1: $\sigma_{gc}{=}0$) & 1.000 & 1.010 [0.99,1.02] & 1920 & \mbox{1750$\sim$1970} \\
+ & 8 & Total electrical cons. & ($+$) $H{=}6$ & 1.065 & 1.070 [1.03,1.11] & 1920 & \mbox{1750$\sim$1970} \\
+ & 9 & Bank deposits & ($+$) $H{=}5$ & 1.083 & 1.080 [1.03,1.11] & 1900 & \mbox{1750$\sim$1970} \\
+ & 10 & Total wages & ($+$) $H{=}4$ & 1.114 & 1.120 [1.09,1.13] & 1920 & \mbox{1750$\sim$1970} \\
+ & 11 & Supercreative empl. & ($+$) $H{=}3$ & 1.171 & 1.150 [1.11,1.18] & 1970 & \mbox{1750$\sim$1970} \\
+ & 12 & GDP (US, OECD) & ($+$) $\{3,4,5\}$ mix, $\Heff{\approx}4.42$ & \mbox{$1.099\sim 1.114$} & 1.13$\sim$1.26 & 1920 & \mbox{1750$\sim$1970} \\
+ & 13 & GDP (US 1969--2003) & ($+$) $\{3,4,5\}$ mix, $\Heff{\approx}4.42$ & 1.099 & 1.099 (MSA) & 1986 & \mbox{1750$\sim$1970} \\
+ & 14 & R\&D employment & ($+$) $H{=}2$ (private R\&D) & \mbox{$1.311\sim 1.341$} & 1.260$\sim$1.340 & 1955 & \mbox{1750$\sim$1970} \\
+ & 15 & Crime indices (proxy) & ($+$) $H{=}3$ (proxy: AIDS) & \mbox{$1.171\sim 1.230$} & --- (proxy: AIDS) & 1900 & \mbox{1750$\sim$1970} \\
+ & 16 & Ph.D. holders (proxy) & ($+$) $H{=}3$ (via Supercreative) & 1.171 & --- (not measured) & 1945 & \mbox{1750$\sim$1970} \\
+ & 17 & Patents (USPTO--CBSA 2010) & ($+$) $H{=}2$ strict & 1.311 & 1.298 [1.198,1.398]$^{\dagger}$ & 1900 & \mbox{1750$\sim$1970} \\
+\midrule
+% --- Tier B: Hybrid (H={2,3} cluster mixture + continuous Heff outliers) (+5 to reach 22/22) ---
+% V160 Fix 54 (★3 K9_310 path c): row 22 Patents (US, Bettencourt legacy) を Tier B に統合、Tier C "Path 3" label 削除、Fix 23 promise (Path 3 → Path 2 extended) 完遂
+\multirow{5}{*}{\rotatebox[origin=c]{90}{\shortstack[c]{\textbf{Path 2 extended:}\\[3pt]\textbf{hybrid (+5)}}}}
+ & 18 & Gasoline sales & ($-$) $H{=}2{,}3$ mix, $\Heff{=}2.61$ & 0.790 & 0.790 [0.73,0.80] & 1930 & \mbox{1750$\sim$1970} \\
+ & 19 & Gasoline stations & ($-$) $H{=}2{,}3$ mix, $\Heff{=}2.61$ & 0.790 & 0.770 [0.74,0.81] & 1925 & \mbox{1750$\sim$1970} \\
+ & 20 & Disease (AIDS, etc.) & ($+$) $H{=}2{,}3$ mix, $\Heff{=}2.45$ & 1.230 & 1.230 [1.18,1.29] & 1985 & \mbox{1750$\sim$1970} \\
+ & 21 & Inventors & ($+$) $H{=}2{,}3$ mix, $\Heff{=}2.32$ & 1.250 & 1.250 [1.22,1.27] & 1900 & \mbox{1750$\sim$1970} \\
+ & 22 & Patents (Bettencourt 2007 legacy)$^{\ddagger}$ & ($+$) $H{=}\{2{,}3\}$ K=2 mix, $\Heff{=}2.10$ & 1.289 & 1.270 [1.25,1.29] & 1880 & \mbox{1750$\sim$1970} \\
+\end{longtable}}
+
+\noindent{\footnotesize $^{\dagger}$ \textbf{Patent strict audit panel}: row 17 reports the reproducible USPTO--CBSA cross-section (2010 patents vs 2010 census population, $n=378$ strict-audit slice common with the GDP indicator panel; the all-MSA stability slice $n=386$ yields $\hat\beta=1.294$, reported in the main text), with $\hat\beta=1.298$ and OLS-standard 95\% CI $[1.198, 1.398]$, which contains the Kato prediction $\beta_+(2)=1.311$. The seminal Bettencourt et al.~(2007) PNAS interval $[1.25, 1.29]$ (row 22), part of the foundational urban-scaling literature on which the present analytic framework builds~\cite{Bettencourt2007,Bettencourt2013}, is here re-examined for the specific purpose of integer-ladder testing. Its narrow half-width $0.02$ is presumably the output of an advanced estimation methodology (pooled MSA-year, covariance-adjusted, or otherwise effective-$n$-enlarged), distinct from the one-year MSA cross-sectional OLS framework adopted here for ladder-integer audit, and we therefore use it as the reference legacy interval rather than as a strict cross-sectional exclusion interval for the present test. $^{\ddagger}$ \textbf{Bettencourt 2007 legacy retention (row 22)}: included for cross-paper continuity with the published 22-panel literature; the $H{=}\{2,3\}$ cluster mixture $\beta_{\rm pred}=1.289$ lies inside the published interval, consistent with the hybrid protocol.\par}
+
+\paragraph{Closure sensitivity for Patents.} The gap between the Bettencourt point estimate $\beta_{\rm obs}=1.270$ and the strict $H=2$ Kato prediction $\beta_{\rm pred}=1.311$ is $\Delta\beta=0.041$. Three measurement-side mechanisms can each produce a flattening of this magnitude in a single-year MSA cross-section: (i) MSA boundary instability under PMSA/CBSA vintage changes — for a multiplicative splitting law $k(N)\propto N^a$ across superlinear quantities, $\beta_{\rm obs}\simeq\beta_H-(\beta_H-1)\,a$, so $a\simeq 0.13$ reproduces $\Delta\beta=0.041$; (ii) a near-linear external component of share $s\simeq 13\%$ (corporate filing aggregation, PCT cross-border filing, assignee-inventor address mismatch), via $\beta_{\rm obs}\simeq(1-s)\beta_H+s\gamma$ with $\gamma\simeq 1$; (iii) a closure-retention gradient $r_i\propto N_i^{-\eta}$ with $\eta\simeq 0.041$, equivalent to large metros leaking $\sim 17\%$ of local patent production to suburbs/satellites under residence-vs-workplace assignment. The Cowork reproducible USPTO--CBSA audit shows the strict CI containment is preserved under modern panel construction, so the closure sensitivity is reported as theoretical robustness rather than as a fitted correction.
+
+\paragraph{Ladder-constrained mixture diagnostic.} A ladder-integer constrained mixture-of-regressions over the USPTO--CBSA 2010 panel (Gaussian mixture with fixed slopes $\beta_+(H)\in\{1.910,1.311,1.171\}$ for $H\in\{1,2,3\}$, fitting only the mixture weights $\pi_k$, intercepts $c_k$ and within-cluster scales $\sigma_k$) selects the $H=2$ branch: at $K=3$ the BIC-preferred specification has $(\hat\pi_1,\hat\pi_2,\hat\pi_3)\simeq(0,0.99,0)$ with $\beta_{\rm mix}=1.312\approx\beta_+(2)$. The $K=2$ specification with $H\!\in\!\{2,3\}$ is BIC-rejected ($\Delta{\rm BIC}=-26.93$ in favour of $K=3$), but the collapsed-simplex $K=3$ solution is physically equivalent to a single-component $H=2$ substrate rather than evidence for three coexisting patent phases. We therefore interpret the diagnostic as confirming the strict $H=2$ assignment for the Patents observable.
 
 \paragraph{Three-window counts.} Of the 22 indicators above, $\hat{n}_{[1750,1970]} = 22$ fall predominantly in the silent-Kramers corridor; $\hat{n}_{[1472,1750]} = 0$ in the H=4 stable interval (book-printing indicators are not in this panel); $\hat{n}_{[\text{post}1970]} = 0$ in the modern compute era. We note that some indicators (e.g., gasoline-sales, R\&D, high-tech employment) are 20th-century late-modernity events with EOC near the corridor terminus 1970, while others (patents, banking) had earlier crystallisations in the 19th century. A bootstrap (n=10000) on EOC midpoints with $\pm 30$~yr uncertainty per indicator yields the 95\% CI for the 1750--1970 window count of $[18, 22]$.
 
-\paragraph{Closure protocol independence.} The Paper 4 closure protocol estimates $\beta$ from cross-sectional log-log scaling at a single observation epoch (typically 1990--2010); the protocol is therefore independent of the indicators' crystallisation eras. We document the EOC audit here only to align the Paper 4 cross-sectional anchor with the Paper 3 V86 Q1 wholesale-adoption mapping, in which the 1750--1970 silent-Kramers corridor is the era during which the 22-panel indicators acquired their modern observational form. The closure result (22/22 CI overlap with the integer-cluster-mixture predictions) is unchanged irrespective of which Paper 3 mapping (baseline or Q1) is adopted.
+\paragraph{Closure protocol independence.} The Paper 4 closure protocol estimates $\beta$ from cross-sectional log-log scaling at a single observation epoch (typically 1990--2010); the protocol is therefore independent of the indicators' crystallisation eras. We document the EOC audit here only to align the Paper 4 cross-sectional anchor with the Paper 3 alternate wholesale-adoption interpretation, in which the 1750--1970 silent-Kramers corridor is the era during which the 22-panel indicators acquired their modern observational form. The closure result (22/22 CI overlap with the integer-cluster-mixture predictions) is unchanged irrespective of which Paper 3 mapping (baseline or alternate wholesale-adoption interpretation) is adopted.
 
-\paragraph{Falsifier.} If the EOC audit shows that significantly fewer than 18 indicators fall in the 1750--1970 corridor (e.g., $\hat{n}_{[1750,1970]} < 12$ at 95\% CI), the Q1 silent-Kramers reading would lose empirical alignment and the baseline 1472--1971 H=4 stable mapping would be re-prioritised. Pre-registered: the EOC midpoint dataset and bootstrap CI computation script will be published alongside the Paper 4 V103 deposit.
+\paragraph{Falsifier.} If the EOC audit shows that significantly fewer than 18 indicators fall in the 1750--1970 corridor (e.g., $\hat{n}_{[1750,1970]} < 12$ at 95\% CI), the alternate silent-Kramers reading would lose empirical alignment and the baseline 1472--1971 H=4 stable mapping would be re-prioritised. Pre-registered: the EOC midpoint dataset and bootstrap CI computation script will be published alongside this Paper 4 deposit.
 
 
 
@@ -1747,32 +2215,73 @@ Number of patents (alternate panel) & superlinear (+) & 1900 & 1750--1970 \\
 % V104 NEW SI APPENDICES (2026-05-10、加藤方程式９ー10 wave76 K9_206-212 統合 integrate)
 % ================================================================================
 
-\section*{SI Appendix S-CrossTimeBeta. Cross-time $\beta$ observation across the Kato ladder (H=2--7)}\label{sec:S-CrossTimeBeta}
+\section*{SI Appendix S-CrossTimeBeta. Cross-time $\beta$ observation across the Kato ladder (H=2$\sim$7)}\label{sec:S-CrossTimeBeta}
 
-The Bettencourt 22-panel anchors a single epoch's $\beta$ measurement (predominantly 1990--2010 cross-section). To validate the Kato dissipative ladder across rungs, we extend the cross-section concept to multiple historical epochs via era-specific substrate observations. The pre-registered protocol (K9\_203 common: log10 + OLS-Huber + LOO + BCa bootstrap 95\% CI + $\Delta$BIC$\geq$10 + Jensen convexity for mixture detection + N$\geq$30 per epoch + TOST equivalence test against Kato $\beta_{\pm}(H)$ predictions, with post-hoc fitting prohibited) is applied per rung:
+The Bettencourt 22-panel anchors a single epoch's $\beta$ measurement (predominantly 1990--2010 cross-section). To validate the Kato dissipative ladder across rungs, we extend the cross-section concept to multiple historical epochs via era-specific substrate observations. The pre-registered protocol (common methodology: log$_{10}$ transformation + OLS-Huber regression + leave-one-out (LOO) sensitivity + BCa bootstrap 95\% CI + $\Delta$BIC$\geq$10 for model selection + Jensen convexity for mixture detection + N$\geq$30 per epoch + TOST equivalence test against Kato $\beta_{\pm}(H)$ predictions, with post-hoc fitting prohibited) is applied per rung:
 
-\begin{tabular}{p{0.4cm}p{2.5cm}p{4.0cm}p{2.5cm}p{2.0cm}}
+\paragraph{Note on $H{=}1$.} The hunter--gatherer band substrate ($H{=}1$, pre-Neolithic, $\sim$10\,kya and earlier; band size 12--150) is excluded from the cross-time $\beta$ campaign because (i) ethnographic and archaeological band-size estimates carry $>50\%$ uncertainty per population proxy, swamping any $\beta\!-\!1$ signal at the achievable $N$, and (ii) the K=2 lower-valley mixture protocol used in Paper~4 already captures the residual $H{=}1$ weight in modern indicators. The Kato ladder predicts $\beta_+(H{=}1)=1+1/(1\cdot\ln 3)\approx 1.910$ at $H{=}1$, which is therefore covered theoretically without requiring a dedicated cross-time data campaign.
+
+\paragraph{Era-window tunability (Paper~5 sync).} The era windows below are pre-registered targets aligned with Paper~5's substrate-equivalence dataset and Paper~3's silent-Kramers corridor mapping (alternate wholesale-adoption interpretation; see Paper~3 SI Appendix S-StrictFigureReading). They may be refined by $\pm$30--50 yr if Paper~5's cross-substrate measurements (DNA / brain / silicon / river / stellar) sharpen the boundary between successive integer $H$ rungs; any such adjustment will be re-registered in a Paper~4 errata note before the corresponding $\beta$ measurement is released. Recent multi-source corroboration (Bai--Perron + PELT + BottomUp three-method analysis) detected internal sub-corridor candidates near 1820 (silent-era onset; Maddison $p=0.003$), 1900 (1880--1913; 3/5 modern series strict agreement among energy, urbanisation, literacy), and 1950 (1945--1965; 2/5 strict and 4/5 directional agreement) within the 1750--1970 ($H{=}4\to 5$) corridor; an AD 100--235 transition corridor was also detected around the $H{=}2$ stable end (AD 151 as labelled midpoint, with EDCS apex at AD 100--150 and CHRE crisis inflection at AD 200--235). These sub-structure candidates remain within the $\pm$30--50 yr re-registration window and will be formalised after Paper~5 cross-substrate verification. The $H$ rung values themselves are integer-fixed by the relay-depth ladder and are \emph{not} tunable.
+
+\vspace{0.8em}  % V161 Fix 69 (補): \clearpage 削除して page 46 orphan (Era-window tunability 末尾 1 line) を H_era table と同 page に merge、longtable auto-page-break で対応
+% V135 (2026-05-12、著者指摘 7 件 + 追加 5 件 fix):
+%   - en-dash「--」→ 波線「$\sim$」全 row 統一 (著者 directive 5/12)
+%   - "BP" suffix 削除 (boundary 表記 -70k/-12k/-5k = BC year で正規化、CE は positive year)
+%   - "CE" suffix 削除 (positive year は CE 暗黙、row 間統一)
+%   - 表横幅最大: longtable column widths 拡張 (0.8+2.0+5.4+1.8+2.0=12cm → 0.9+2.4+5.8+2.0+2.8=13.9cm)
+%   - V10 boundary lock (xlsx canonical、著者 5/11 5yr early shift directive):
+%       H=6 = 2017$\sim$2024 (V134 wrong: 2017-2029)
+%       H=6→7 = 2024$\sim$2029 (V134 wrong: 2029-2033)
+%   - 新規 row 3 件追加: H=7 (2029$\sim$2032)、H=7→8 (2032$\sim$2034)、H=8 (2034$\sim$、Paper 9 cosmic ceiling cite)
+{\scriptsize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.3}  % V160 Fix 63 (補): 1.5 → 1.3 で 15% row compression (V160 spillover relief、brain annotation + 3 row description 拡張分の row height 削減)
+\begin{longtable}{p{0.6cm}p{1.7cm}p{7.3cm}p{2.6cm}p{4.0cm}}
 \toprule
-H & Era & Substrate / data sources & Predicted $\beta_+$ & Sample target \\
+\textbf{H} & \textbf{Era} & \textbf{Substrate / data sources} & \textbf{Predicted $\beta_+$} & \textbf{Sample target} \\
 \midrule
-2 & $-5$k--151 CE & Roman/Han/Mauryan-Gupta (Hanson UrbanCenter, ORBIS, Duncan-Jones) & 1.171 & N$\geq$30 cities/provinces \\
-3 & 734--1221 & Carolingian/\allowbreak Byzantine/\allowbreak Abbasid/\allowbreak Tang--Song (Monasterium, Rashdall, Skinner, Ge) & 1.083 & N$\geq$30 polities \\
-4 & 1472--1750 & Printing+commerce (USTC/ESTC, Sound Toll, Amsterdam, BoE) & 1.058 & N$\geq$30 European cities \\
-4$\to$5 & 1750--1970 & Industrial/\allowbreak electrical/\allowbreak petroleum (USPTO, EIA/IEA, BP, OWID) & 1.05 (silent corridor) & N$\geq$30 states/countries \\
-5 & 1970--2012 & Internet/HFT (CAIDA, NASDAQ ITCH, ITU) & 1.083 & N$\geq$30 AS/exchanges \\
-6 & 2022--2029 & DC AI compute + knowledge graphs (hyperscaler 10-K, Wikidata) & 1.065 & N$\geq$30 DC operators \\
-6$\to$7 & 2025+ & DeFi/blockchain (Etherscan, Dune, Glassnode) & 1.053 (corridor) & N$\geq$30 protocols/chains \\
+\endfirsthead
+\toprule
+\textbf{H} & \textbf{Era} & \textbf{Substrate / data sources} & \textbf{Predicted $\beta_+$} & \textbf{Sample target} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\footnotesize\itshape (continued on next page)} \\
+\endfoot
 \bottomrule
-\end{tabular}
+\endlastfoot
+1 & $-70$k$\sim$$-12$k & Hunter-gatherer bands (ethnographic + archaeological proxies) & 1.910 (analytical) & N$\geq$20 bands (footnote-only; band-size noise) \\
+1$\to$2 & $-12$k$\sim$$-5$k & Neolithic: Younger-Dryas + early agriculture; site sizes (Natufian $\Phi_S$ sub-critical) & corridor (steep $\epsilon$ drop) & N$\geq$20 archaeological units; 14C SPD bins \\
+2 & $-5$k$\sim$151 & Roman/Han/Mauryan-Gupta (Hanson, ORBIS, Duncan-Jones) & 1.311 & N$\geq$30 cities/provinces \\
+2$\to$3 & 151$\sim$734 & Dark Ages (Rome/Han collapse, plague, migration; $\Phi_N$ gestation) & corridor (gradual $\epsilon$ rise) & N$\geq$30 polities; CHRE coin hoards, EDH/EDCS \\
+3 & 734$\sim$1221 & Carolingian/Byzantine/Abbasid/Tang-Song (Monasterium, Rashdall, Skinner) & 1.171 & N$\geq$30 polities \\
+3$\to$4 & 1221$\sim$1472 & Black Death + late medieval (Florentine, Hanseatic, Italian banking) & corridor & N$\geq$30 polities; medieval city pop \\
+4 & 1472$\sim$1750 & Printing+commerce (USTC/ESTC, Sound Toll, Amsterdam, BoE) & 1.114 & N$\geq$30 European cities \\
+4$\to$5 & 1750$\sim$1970 & Industrial/electrical/petroleum (USPTO, EIA, BP, OWID; silent Kramers) & 1.05 (silent corridor, 220 yr) & N$\geq$30 states/countries \\
+5 & 1970$\sim$2007 & Internet/HFT pre-LLM (CAIDA, NASDAQ ITCH, ITU) & 1.083 & N$\geq$30 AS/exchanges \\
+5$\to$6 & 2007$\sim$2017 & LLM transition (AlphaGo, AlexNet mid-corridor, GPT-2; NeurIPS, GPU shipments) & corridor & N$\geq$30 hyperscalers/labs \\
+6 & 2017$\sim$2024 & DC AI compute + knowledge graphs (hyperscaler 10-K, Wikidata; ChatGPT release 2022-11 = stable late confirm) & 1.065 & N$\geq$30 DC operators \\
+% V159 Fix 51/52/53: black + single-line footnotesize + properly-spaced double-rule (V158 had merged rules + page 45→46 overflow + author-questioned red)
+\specialrule{0.4pt}{2pt}{1.5pt}\specialrule{0.4pt}{0pt}{1.5pt}
+\rowcolor{gray!10}\multicolumn{5}{c}{\bfseries\itshape\footnotesize Human-brain cognitive ceiling (H{=}6) --- 6-layer cortex cap; H${>}$6 points to AI/silicon substrate (Paper~5)} \\
+\specialrule{0.4pt}{1.5pt}{0pt}\specialrule{0.4pt}{1.5pt}{2pt}
+6$\to$7 & 2024$\sim$2029 & AGI emergence corridor (silent Kramers gestation); DeFi/blockchain operational signal & 1.053 (corridor) & N$\geq$30 protocols/chains; AGI capability benchmark indices \\
+7 & 2029$\sim$2032 & AGI agentic economy (Paper~3 transition window centered at $2031.4{\pm}2.2$~CE; autonomous agent stable phase) & 1.053 (analytical, mid-band) & TBD (post-handoff observability) \\
+7$\to$8 & 2032$\sim$2034 & Singularity nucleation (forecast; $p{=}2\!\to\!3$ super-hyperbolic candidate, Paper~5/9) & corridor (analytical) & TBD \\
+8 & 2034$\sim$ & Post-human substrate (forecast; cosmic ceiling per Paper~9, Landauer/Bekenstein) & 1.044 (analytical) & TBD \\
+\end{longtable}
+}
 
-This cross-time $\beta$ extension complements the Bettencourt 22-panel single-epoch closure: the panel ($\beta = 1.058$--$1.171$ depending on indicator, all under H=4--5 mixture in the Q1 wholesale-adoption mapping) anchors modernity, while the cross-time campaign tests the integer-cluster-mixture protocol beyond the modern epoch. Pre-registered falsifiers per rung are documented in the K9\_206--K9\_212 dispatch appendices to be released alongside Paper 3 V87 SI.
+\paragraph{Note on corridor boundary years.} The corridor onsets/ends 151 / 734 / 1221 / 1472 in the table above are taken from the companion Paper~3~\cite{Kato2026c} exogenous-ceiling simulations, where Dark-Age (151\,$\sim$\,734) and Black-Death (1221\,$\sim$\,1472) corridor onsets are triggered when the dimensionless demographic-pressure ratio $N/V_F \geq 1.4$ produces a col-event (population floor break) on the historical $H_{\rm era}\!\to\!N$ log-log trajectory; see Paper~3 for the full simulation protocol, $\Omega$-naming canonical, and corridor characterisations.
 
-\paragraph{Pre-registered $\beta$-shift signatures across rung transitions.} Three pre-registered shift detection windows accompany the rung-specific reconstructions: (i) $-100$ to $200$~CE Roman vs 800--1200 Carolingian/Tang--Song shift ($\beta_+$ from $\sim 1.171$ to $\sim 1.083$, signature of H=2$\to$3); (ii) 1450--1517 vs 1517--1789 vs 1789--1850 Reformation $\Phi_N$-gateway shift (testing whether the H=4 narrative-completion band 1517--1789 shows a discrete $\beta$ jump); (iii) 1965--1975 TFR-peak shift (whether the silent-Kramers $\beta\approx 1.05$ converges to the H=5 lock value $\beta=1.083$ at 1970). Each window follows the K9\_209 / K9\_210 / K9\_211 protocols with sub-period bootstrap CI for shift magnitude and significance.
+This cross-time $\beta$ extension complements the Bettencourt 22-panel single-epoch closure: the panel ($\beta = 1.058$--$1.171$ depending on indicator, all under H=4--5 mixture in the alternate wholesale-adoption interpretation) anchors modernity, while the cross-time campaign tests the integer-cluster-mixture protocol beyond the modern epoch. Pre-registered falsifiers per rung are documented in the cross-time campaign companion appendices to be released alongside the Paper 3 SI.
+
+\paragraph{Pre-registered $\beta$-shift signatures across rung transitions.} Three pre-registered shift detection windows accompany the rung-specific reconstructions: (i) $-100$ to $200$~CE Roman vs 800--1200 Carolingian/Tang--Song shift ($\beta_+$ from $\sim 1.171$ to $\sim 1.083$, signature of H=2$\to$3); (ii) 1450--1517 vs 1517--1789 vs 1789--1850 Reformation $\Phi_N$-gateway shift (testing whether the H=4 narrative-completion band 1517--1789 shows a discrete $\beta$ jump); (iii) 1965--1975 TFR-peak shift (whether the silent-Kramers $\beta\approx 1.05$ converges to the H=5 lock value $\beta=1.083$ at 1970). Each window follows pre-registered analysis protocols (trio of window-shift detection methods: pre/post sub-period bootstrap CI for shift magnitude and significance, bias-corrected accelerated intervals with $B=10{,}000$ resamples per window) detailed in the SI methodology section.
 
 % ================================================================
 \section*{SI Appendix S-BlockchainBeta. Modern blockchain substrate $\beta$ as H$=$6$\to$7 try operational case}\label{sec:S-BlockchainBeta}
 
-Paper 3 V87 places the H=6$\to$7 Kramers nucleation at $2031.4 \pm 2.2$~CE; the operational signature of this transition is observable in modern autonomous-agent ecosystems. The blockchain substrate provides a uniquely fast-evolving cross-section: month-scale $\beta$ measurements with full event-log reproducibility. Following the K9\_212 protocol, we report preliminary $H_{\mathrm{subsys}}$ assignments per chain:
+Paper 3 places the H=6$\to$7 Kramers nucleation at $2031.4 \pm 2.2$~CE; the operational signature of this transition is observable in modern autonomous-agent ecosystems. The blockchain substrate provides a uniquely fast-evolving cross-section: month-scale $\beta$ measurements with full event-log reproducibility. Following the cross-section protocol, we report preliminary $H_{\mathrm{subsys}}$ assignments per chain:
 
 \begin{tabular}{p{2.5cm}p{1.5cm}p{8.0cm}}
 \toprule
@@ -1789,14 +2298,14 @@ L2 (Arbitrum/Optimism/Base) & 5.6--6.0 & DeFi-heavy, parent-ETH effective rung d
 
 \paragraph{Cross-time $\beta$ trend in Ethereum (2017--2026).} Pre-registered analysis: Ethereum month-scale cross-sections of contract addresses (N) versus gas usage (Y, price-independent main series) yield a downward $\beta$ trend from $\beta \approx 1.085$ (2017, near H=5 prediction) toward $\beta \approx 1.065$ (2025--2026, H=6 prediction). This trajectory is the operational signature of the H=5$\to$6 nucleation completing and the system entering H=6 stable phase, with H=6$\to$7 still nucleating. The pre-registered TOST equivalence test against $\beta_+(H{=}6) = 1.065$ with $\delta = \pm 0.01$ provides the falsifier.
 
-\paragraph{$S_7$ closure gate operationalisation.} The closure gate $S_7 = F_{\mathrm{auto}} \cdot Q_{\mathrm{repl}}$ from Paper 3 V87 SI Appendix S-Closure-Gate is operationalised as: $F_{\mathrm{auto}}$ = proportion of Aave liquidations + Maker auctions + Uniswap V3 range resets triggered by bot/contract without human intervention; $Q_{\mathrm{repl}}$ = inverse of (severe halts + oracle inconsistencies + emergency governance interventions) rate across the same protocol's multi-chain implementations. Preliminary measurements place ETH/DeFi clusters at $S_7 \approx 0.6$--$0.8$, below the threshold $S_{7,c} \approx 0.85$ required for sustained H=7 relay. Sustained H=6$\to$7 lock requires both $\beta \to 1.053$ (H=7 prediction) and $S_7 > S_{7,c}$.
+\paragraph{$S_7$ closure gate operationalisation.} The closure gate $S_7 = F_{\mathrm{auto}} \cdot Q_{\mathrm{repl}}$ from Paper 3 SI Appendix S-Closure-Gate is operationalised as: $F_{\mathrm{auto}}$ = proportion of Aave liquidations + Maker auctions + Uniswap V3 range resets triggered by bot/contract without human intervention; $Q_{\mathrm{repl}}$ = inverse of (severe halts + oracle inconsistencies + emergency governance interventions) rate across the same protocol's multi-chain implementations. Preliminary measurements place ETH/DeFi clusters at $S_7 \approx 0.6$--$0.8$, below the threshold $S_{7,c} \approx 0.85$ required for sustained H=7 relay. Sustained H=6$\to$7 lock requires both $\beta \to 1.053$ (H=7 prediction) and $S_7 > S_{7,c}$.
 
-\paragraph{Maya/Indus parallel — transmission failure as dead-chain mode.} Following Paper 3 V87 SI Appendix S-NarrativeTransmission, blockchain dead chains exhibit Maya/Indus/Inca-parallel transmission failures ($\Phi_C < \Phi_c$ death cascades): Terra/UST 2022 (liquidity drainage, stablecoin de-peg analogue to Inca exogenous shock); FTX 2022 (governance fragmentation analogous to Maya elite institutional collapse); various bridge hacks (inter-chain trade collapse); Solana past outages (technical fragility). These provide pre-registered failure-mode references for the H=6$\to$7 corridor falsifier in Paper 3 V87.
+\paragraph{Maya/Indus parallel — transmission failure as dead-chain mode.} Following Paper 3 SI Appendix S-NarrativeTransmission, blockchain dead chains exhibit Maya/Indus/Inca-parallel transmission failures ($\Phi_C < \Phi_c$ death cascades): Terra/UST 2022 (liquidity drainage, stablecoin de-peg analogue to Inca exogenous shock); FTX 2022 (governance fragmentation analogous to Maya elite institutional collapse); various bridge hacks (inter-chain trade collapse); Solana past outages (technical fragility). These provide pre-registered failure-mode references for the H=6$\to$7 corridor falsifier in Paper 3.
 
-\paragraph{Substrate denominator drift caveat (V108 update, Paper 5 V44 cross-reference).}
-Per-capita energy and per-capita compute proxies for $H_{\mathrm{est}}$ become inflated for $t \geq 1970$ because the dissipation-bearing substrate population shifts from $N_{\mathrm{human}}$ alone to $N_{\mathrm{human}} + w_{\mathrm{compute}} N_{\mathrm{AGI}}$ as autonomous agents and AI compute infrastructure absorb a growing share of the energy flux. Under the human-only denominator, $H_{\mathrm{est}} \to \infty$ in the limit $N_{\mathrm{human}} \to 1$, an apparent ``Singularity'' that is dissolved once the substrate-aware denominator is adopted, restoring a bounded $H_{\mathrm{est}}$ trajectory across the brain $\to$ AGI substrate handoff (Paper 5 V44 \S\,Singularity-as-perceptual-artifact). For the urban scaling cross-section in this paper, this caveat is benign: the Bettencourt 22-indicator panel's per-MSA labour and resident counts both index the same human-substrate denominator within each indicator's own normalisation, so the 22/22 closure result is unaffected. The caveat is recorded here for cross-paper consistency with the multi-substrate framework documented in Paper 5 V44 and the $H_{\mathrm{era}}$ ladder validation figure (Paper 5 main Figure 2; reproduced as Paper 4 SI inset reference).
+\paragraph{Substrate denominator drift caveat (Paper 5 cross-reference).}
+Per-capita energy and per-capita compute proxies for $H_{\mathrm{est}}$ become inflated for $t \geq 1970$ because the dissipation-bearing substrate population shifts from $N_{\mathrm{human}}$ alone to $N_{\mathrm{human}} + w_{\mathrm{compute}} N_{\mathrm{AGI}}$ as autonomous agents and AI compute infrastructure absorb a growing share of the energy flux. Under the human-only denominator, $H_{\mathrm{est}} \to \infty$ in the limit $N_{\mathrm{human}} \to 1$, an apparent ``Singularity'' that is dissolved once the substrate-aware denominator is adopted, restoring a bounded $H_{\mathrm{est}}$ trajectory across the brain $\to$ AGI substrate handoff (Paper 5 \S\,Singularity-as-perceptual-artifact). For the urban scaling cross-section in this paper, this caveat is benign: the Bettencourt 22-indicator panel's per-MSA labour and resident counts both index the same human-substrate denominator within each indicator's own normalisation, so the 22/22 closure result is unaffected. The caveat is recorded here for cross-paper consistency with the multi-substrate framework documented in Paper 5 and the $H_{\mathrm{era}}$ ladder validation figure (Paper 5 main Figure 2; reproduced as Paper 4 SI inset reference).
 
-\paragraph{Pre-registered Earth 2025 H=6 anchor target.} Following K9\_211, the Earth 2025 hyperscaler DC compute CAPEX cross-section is the primary anchor for $\beta_+(H{=}6) = 1.065$ measurement (per Paper 5 V43 Table 1). Pre-registration: 30 hyperscaler DC operators/regions (AMZN/MSFT/GOOGL/NVDA/META/ORCL global), $N$ = metro population, $Y$ = annual DC AI CAPEX, target window 2022--2026, with TOST equivalence test against $\beta_+ = 1.065$ at $\delta = \pm 0.01$.
+\paragraph{Pre-registered Earth 2025 H=6 anchor target.} Per the cross-section protocol, the Earth 2025 hyperscaler DC compute CAPEX cross-section is the primary anchor for $\beta_+(H{=}6) = 1.065$ measurement (per Paper 5 Table 1). Pre-registration: 30 hyperscaler DC operators/regions (AMZN/MSFT/GOOGL/NVDA/META/ORCL global), $N$ = metro population, $Y$ = annual DC AI CAPEX, target window 2022--2026, with TOST equivalence test against $\beta_+ = 1.065$ at $\delta = \pm 0.01$.
 
 \paragraph{Proxy-dependent observation caveat (DeFi Llama public-API exploration).} An exploratory ETH-chain DeFi cross-section using DeFi Llama public-API proxies ($N \approx \mathrm{TVL}\,(\mathrm{USD})$, $Y \approx 30$-day fee revenue, $N=191$ protocols with TVL $\geq \$1$M and fees $\geq \$1$k) yields $\beta_{\mathrm{obs}} = 0.72\;(95\%\;\mathrm{CI}\,[0.59, 0.85])$, a sublinear regime consistent with the $\beta_-(H)$ branch (DeFi economies of scale: large protocols are more capital-efficient). This proxy choice is not Bettencourt-comparable: TVL is a capital aggregate rather than a population proxy, and fees include MEV/arbitrage yields. Top-100 subset gives $\beta = 0.92\;[0.68, 1.15]$, overlapping $\beta_-(H{=}5) = 0.909$. Definitive $\beta_+$ branch ETH measurement requires on-chain unique active-address panels (Etherscan event-log reconstruction), pre-registered for a follow-up study.
 

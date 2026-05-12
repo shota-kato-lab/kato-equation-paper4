@@ -18,9 +18,9 @@ Patents land on H = 2; GDP and wages occupy an H = 4–5 corridor; infrastructur
 
 | File / folder | Content |
 |---|---|
-| `main.tex` | Paper 4 main manuscript (V129, v1.1) |
+| `main.tex` | Paper 4 main manuscript |
 | `SI.tex` | Supplementary Information (V71) |
-| `refs.bib` | BibTeX references (V25) |
+| `refs.bib` | BibTeX references |
 | `significance.tex` | 150-word significance statement (V2, Science Advances format) |
 | `submission/cover_letter.tex` | Cover letter (V7, Science Advances tier) |
 | `figures/` | Source figures (placeholder — embedded PDFs in `main.tex`) |
@@ -31,7 +31,16 @@ Patents land on H = 2; GDP and wages occupy an H = 4–5 corridor; infrastructur
 
 ## Release history
 
-- **v1.1 (this release)** — Manuscript V128/V129. Polish wave (Paper "-1" Manifesto 1 + Paper 0 Manifesto 2 reframe; abstract corrected to K=2 lower-valley H ∈ {1,2}; SI cross-time β table column collision fix; "exponent(s)" language unification; header date format polish; V100-layout page-1+2 restoration; data and code availability section forward-looking).
+- **v1.2 (this release)** — **Closing Bettencourt's canonical 22-indicator urban panel with a zero-parameter relay-depth ladder.** Building on the seminal Bettencourt et al.~(PNAS 2007) framework, this manuscript proposes a zero-parameter Kato relay-depth ladder $\beta_\pm(H) = 1 \pm 1/[H \ln(2H+1)]$ that closes all 22 indicators at the 95% CI: 17/22 at strict integer H, 21/22 with continuous H_eff, **22/22 under a label-free K=2 lower-valley mixture protocol** (MAE = 0.031, RMSE = 0.045). Headline manuscript paired with a twelve-document cluster preview (Paper "-1" Manifesto 1 + Paper 0 Manifesto 2 + Papers 1–10) and one-click arXiv endorsement URLs for first-time submitter (physics.soc-ph + cs.AI).
+
+  - **Hero page**: forest plot of the Bettencourt 22-indicator closure.
+  - **SI Appendix S-PanelOrigins**: per-indicator panel with three coverage tiers (17 strict integer + 4 continuous H_eff + 1 K=2 cluster mixture). Reading guide formalises three non-H→∞ paths to β=1 (cross-branch σ_gc=0 / continuous H_eff Jensen / K=2 cluster integer mixture).
+  - **SI Appendix S-CrossTimeBeta**: 15-row cross-time β reconstruction (hunter-gatherer band H=1 through post-human substrate H=8) with canonical β_pred values 1.311/1.171/1.114 for H=2/3/4.
+  - **Bettencourt foundational reference acknowledged** with framework-specific reframe for integer-ladder testing.
+  - All hyperlinks clickable (mailto, GitHub, Zenodo concept DOI, PatentsView, all bibliography DOIs via natbib auto-link).
+  - Manuscript prepared through 162 iterations of careful manual revision (cluster preview / SI tables / cross-paper notation alignment / page-layout tuning) and three rounds of independent peer-style audit before release.
+
+- v1.1 — Manuscript polish wave. Paper "-1" Manifesto 1 + Paper 0 Manifesto 2 reframe; abstract corrected to K=2 lower-valley H ∈ {1,2}; SI cross-time β table column collision fix; data and code availability section forward-looking.
 - v1.0-bettencourt — Initial Bettencourt outreach deposit (manuscript V105). Concept DOI: [10.5281/zenodo.20111479](https://doi.org/10.5281/zenodo.20111479); versioned: [10.5281/zenodo.20111480](https://doi.org/10.5281/zenodo.20111480).
 
 ## Author
