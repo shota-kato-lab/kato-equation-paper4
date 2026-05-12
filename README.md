@@ -31,7 +31,7 @@ Patents land on H = 2; GDP and wages occupy an H = 4–5 corridor; infrastructur
 
 ## Release history
 
-- **v1.2 (this release)** — **Closing Bettencourt's canonical 22-indicator urban panel with a zero-parameter relay-depth ladder.** Building on the seminal Bettencourt et al.~(PNAS 2007) framework, this manuscript proposes a zero-parameter Kato relay-depth ladder $\beta_\pm(H) = 1 \pm 1/[H \ln(2H+1)]$ that closes all 22 indicators at the 95% CI: 17/22 at strict integer H, 21/22 with continuous H_eff, **22/22 under a label-free K=2 lower-valley mixture protocol** (MAE = 0.031, RMSE = 0.045). Headline manuscript paired with a twelve-document cluster preview (Paper "-1" Manifesto 1 + Paper 0 Manifesto 2 + Papers 1–10) and one-click arXiv endorsement URLs for first-time submitter (physics.soc-ph + cs.AI).
+- **v1.0 (this release; manuscript V162)** — **Closing Bettencourt's canonical 22-indicator urban panel with a zero-parameter relay-depth ladder.** Building on the seminal Bettencourt et al.~(PNAS 2007) framework, this manuscript proposes a zero-parameter Kato relay-depth ladder $\beta_\pm(H) = 1 \pm 1/[H \ln(2H+1)]$ that closes all 22 indicators at the 95% CI: 17/22 at strict integer H, 21/22 with continuous H_eff, **22/22 under a label-free K=2 lower-valley mixture protocol** (MAE = 0.031, RMSE = 0.045). Headline manuscript paired with a twelve-document cluster preview (Paper "-1" Manifesto 1 + Paper 0 Manifesto 2 + Papers 1–10) and one-click arXiv endorsement URLs for first-time submitter (physics.soc-ph + cs.AI).
 
   - **Hero page**: forest plot of the Bettencourt 22-indicator closure.
   - **SI Appendix S-PanelOrigins**: per-indicator panel with three coverage tiers (17 strict integer + 4 continuous H_eff + 1 K=2 cluster mixture). Reading guide formalises three non-H→∞ paths to β=1 (cross-branch σ_gc=0 / continuous H_eff Jensen / K=2 cluster integer mixture).
@@ -40,8 +40,9 @@ Patents land on H = 2; GDP and wages occupy an H = 4–5 corridor; infrastructur
   - All hyperlinks clickable (mailto, GitHub, Zenodo concept DOI, PatentsView, all bibliography DOIs via natbib auto-link).
   - Manuscript prepared through 162 iterations of careful manual revision (cluster preview / SI tables / cross-paper notation alignment / page-layout tuning) and three rounds of independent peer-style audit before release.
 
-- v1.1 — Manuscript polish wave. Paper "-1" Manifesto 1 + Paper 0 Manifesto 2 reframe; abstract corrected to K=2 lower-valley H ∈ {1,2}; SI cross-time β table column collision fix; data and code availability section forward-looking.
-- v1.0-bettencourt — Initial Bettencourt outreach deposit (manuscript V105). Concept DOI: [10.5281/zenodo.20111479](https://doi.org/10.5281/zenodo.20111479); versioned: [10.5281/zenodo.20111480](https://doi.org/10.5281/zenodo.20111480).
+- v0.2-internal-polish (not deposited; manuscript V128/V129) — Internal polish wave. Paper "-1" Manifesto 1 + Paper 0 Manifesto 2 reframe; abstract corrected to K=2 lower-valley H ∈ {1,2}; SI cross-time β table column collision fix; data and code availability section forward-looking. *(Pushed to GitHub as historical tag `v1.1` but no GitHub Release was published; no Zenodo deposit was minted.)*
+
+- v0.1-bettencourt (withdrawn; manuscript V105) — Initial Bettencourt outreach deposit, withdrawn 2026-05-12 (retraction/withdrawal of a record) once the manuscript polish gap to v1.0 was recognised. Zenodo tombstone (citation metadata only): [10.5281/zenodo.20111480](https://doi.org/10.5281/zenodo.20111480). Superseded by v1.0 above; concept DOI [10.5281/zenodo.20111479](https://doi.org/10.5281/zenodo.20111479) now resolves to v1.0. *(Pushed to GitHub originally as historical tag `v1.0-bettencourt`; tag retired from this repository on 2026-05-13.)*
 
 ## Author
 
