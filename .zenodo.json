@@ -1,6 +1,6 @@
 {
-  "title": "The Kato Equation: A Zero-Parameter Exponent Selection Rule for Urban Scaling",
-  "description": "Working paper on a zero-parameter relay-depth ladder for urban scaling exponents. Tested against the Bettencourt et al. (PNAS 2007) 22-indicator panel: integer relay-depth predictions match 17/22 reported confidence intervals; network-anchored composition lifts coverage to 21/22; a label-free K=2 lower-valley mixture (H in {1,2}) for physical d=3 cities recovers all 22/22, with MAE = 0.031 and RMSE = 0.045. Patents land on H=2; GDP and wages occupy an H=4-5 corridor; infrastructure follows the negative branch. Paper 4 of the Kato Equation Working Paper Cluster (Papers 0-10 plus Manifesto 1/2 forthcoming). Release v1.0 (manuscript V162): launch-ready. Closing Bettencourt's canonical 22-indicator urban panel with a zero-parameter relay-depth ladder. Building on the seminal Bettencourt et al. (PNAS 2007) framework, this manuscript proposes a zero-parameter Kato relay-depth ladder beta_pm(H) = 1 pm 1/[H ln(2H+1)] that closes all 22 indicators at the 95% CI: 17/22 at strict integer H, 21/22 with continuous H_eff, 22/22 under a label-free K=2 lower-valley mixture protocol (MAE 0.031, RMSE 0.045). Headline manuscript paired with a twelve-document cluster preview (Paper \"-1\" Manifesto 1 + Paper 0 Manifesto 2 + Papers 1-10) and one-click arXiv endorsement URLs for first-time submitter (physics.soc-ph + cs.AI). SI Appendix S-PanelOrigins: per-indicator panel with three coverage tiers (17 strict integer + 4 continuous H_eff + 1 K=2 cluster mixture); reading guide formalises three non-H-to-infinity paths to beta=1 (cross-branch sigma_gc=0 / continuous H_eff Jensen convexity / K=2 cluster integer mixture). SI Appendix S-CrossTimeBeta: 15-row cross-time beta reconstruction (hunter-gatherer H=1 through post-human substrate H=8) with canonical beta_pred values 1.311/1.171/1.114 for H=2/3/4. Bettencourt foundational reference acknowledged with framework-specific reframe for integer-ladder testing. All hyperlinks clickable; bibliography DOIs auto-clickable via natbib. Manuscript prepared through 162 iterations of careful manual revision and three rounds of independent peer-style audit before release. Supersedes withdrawn pre-release v0.1-bettencourt (Zenodo tombstone 10.5281/zenodo.20111480, manuscript V105); concept DOI 10.5281/zenodo.20111479 now resolves to v1.0.",
+  "title": "A Relay-Depth Exponent Ladder for the Bettencourt 22-Indicator Urban-Scaling Panel",
+  "description": "Working paper proposing an integer relay-depth exponent ladder beta_pm(H) = 1 pm 1/[H ln(2H+1)] that closes the canonical Bettencourt et al. (PNAS 2007) 22-indicator urban scaling panel at the 95% CI with zero fitted exponents. A zero-fitted-exponent complementary closure with integer, continuous, and hybrid assignments: 17/22 at single-integer H, 21/22 with continuous H_eff, 22/22 under a hybrid H in {2,3} cluster-mixture protocol (MAE 0.031, RMSE 0.045). The framework is pre-registered as falsifiable: a coverage drop to 21/22 or below at any audited release retires the closure. The 2007 panel is treated as the foundational empirical reference throughout; this manuscript is offered as a complementary refinement of that framework rather than a replacement. SI Appendix S-PanelOrigins: per-indicator provenance audit (12 direct strict rows, 5 audit-qualified single-H closures, 4 H in {2,3} explicit mixtures, 1 Bettencourt 2007 legacy comparator). SI Appendix S-CrossTimeBeta: pre-1971 H-era ladder reconstruction and withdrawal of the previously proposed single-population beta bridge. Paper 4 of the Kato Equation Working Paper Cluster. Release v1.0 (manuscript V205, internal build chain V162-V205 documented as comment history in main.tex).",
   "creators": [
     {
       "name": "Kato, Shota",
@@ -11,14 +11,12 @@
   "keywords": [
     "urban scaling",
     "complex systems",
-    "network theory",
-    "statistical physics",
     "Bettencourt",
     "physics of cities",
-    "Kato equation",
     "relay-depth ladder",
+    "zero-fitted-exponent",
     "integer-H mixture",
-    "lower-valley K=2"
+    "network theory"
   ],
   "license": "CC-BY-4.0",
   "upload_type": "publication",

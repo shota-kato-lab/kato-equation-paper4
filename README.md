@@ -1,48 +1,54 @@
-# The Kato Equation — Paper 4
+# Paper 4 — A Relay-Depth Exponent Ladder for the Bettencourt 22-Indicator Urban-Scaling Panel
 
-> A zero-parameter exponent selection rule for urban scaling.
+> A Zero-Fitted-Exponent Complementary Closure with Integer, Continuous, and Hybrid Assignments
 
-This repository accompanies the working paper **"The Kato Equation: A Zero-Parameter Exponent Selection Rule for Urban Scaling"** (Paper 4 of the Kato Equation Working Paper Cluster).
+This repository accompanies the working paper **"A Relay-Depth Exponent Ladder for the Bettencourt 22-Indicator Urban-Scaling Panel — A Zero-Fitted-Exponent Complementary Closure with Integer, Continuous, and Hybrid Assignments"** (Paper 4 of the Kato Equation Working Paper Cluster).
 
 ## Headline result
 
-Tested against the Bettencourt et al. (PNAS 2007) 22-indicator urban panel:
+Tested against Bettencourt et al. (PNAS 2007) canonical 22-indicator urban panel, with zero fitted exponents:
 
-- Integer relay-depth predictions match **17 of 22** reported confidence intervals.
-- Network-anchored composition lifts coverage to **21 of 22**.
-- A label-free **K = 2 lower-valley mixture (H ∈ {1, 2})** for physical d = 3 cities recovers **all 22 of 22** indicators with MAE = 0.031, RMSE = 0.045.
-
-Patents land on H = 2; GDP and wages occupy an H = 4–5 corridor; infrastructure follows the negative branch.
+- **17 of 22** rows land on a single-integer rung of the relay-depth ladder β±(H) = 1 ± 1/[H ln(2H+1)].
+- **21 of 22** rows fall on a continuous H_eff reading.
+- **22 of 22** rows close under a hybrid H ∈ {2, 3} cluster-mixture protocol (MAE = 0.031, RMSE = 0.045).
+- Pre-registered falsifier: any drop to 21/22 or below at an audited release retires the closure.
 
 ## Repository contents
 
 | File / folder | Content |
 |---|---|
-| `main.tex` | Paper 4 main manuscript |
-| `SI.tex` | Supplementary Information (V71) |
-| `refs.bib` | BibTeX references |
-| `significance.tex` | 150-word significance statement (V2, Science Advances format) |
-| `submission/cover_letter.tex` | Cover letter (V7, Science Advances tier) |
-| `figures/` | Source figures (placeholder — embedded PDFs in `main.tex`) |
-| `data/` | Simulation data + Bettencourt 22-indicator reference (placeholder) |
+| `main.tex` | Paper 4 V205 manuscript (single-file architecture; SI Appendices S-PanelOrigins and S-CrossTimeBeta included inline) |
+| `paper4_V27_refs.bib` / `refs.bib` | BibTeX references |
+| `paper4_fig_main.png` | Figure 1: Bettencourt 22-Indicator closure forest plot |
+| `fig_2_epsilon_curve.pdf` | Figure 2: ε(H) relay-depth curve |
+| `significance.tex` | 150-word significance statement |
+| `submission/cover_letter.tex` | Cover letter |
+| `figures/` | Source figures (PNG/PDF) |
+| `scripts/` | Minimal Python reproducibility bundle (see "Reproducibility" below) |
+| `data/` | Placeholder (panel β_obs values are hardcoded inline in `scripts/sim_paper4_22_22_full_impl_v3.py`) |
 | `LICENSE` | CC-BY-4.0 (text and figures) |
-| `LICENSE-CODE` | MIT (simulation / analysis code) |
+| `LICENSE-CODE` | MIT (analysis / simulation code; mirrored as `scripts/LICENSE`) |
 | `.zenodo.json` | Zenodo deposit metadata |
 
 ## Release history
 
-- **v1.0 (this release; manuscript V162)** — **Closing Bettencourt's canonical 22-indicator urban panel with a zero-parameter relay-depth ladder.** Building on the seminal Bettencourt et al.~(PNAS 2007) framework, this manuscript proposes a zero-parameter Kato relay-depth ladder $\beta_\pm(H) = 1 \pm 1/[H \ln(2H+1)]$ that closes all 22 indicators at the 95% CI: 17/22 at strict integer H, 21/22 with continuous H_eff, **22/22 under a label-free K=2 lower-valley mixture protocol** (MAE = 0.031, RMSE = 0.045). Headline manuscript paired with a twelve-document cluster preview (Paper "-1" Manifesto 1 + Paper 0 Manifesto 2 + Papers 1–10) and one-click arXiv endorsement URLs for first-time submitter (physics.soc-ph + cs.AI).
+- **v1.0 (this release; manuscript V205)** — Closing Bettencourt's canonical 22-indicator urban panel with a zero-fitted-exponent integer relay-depth ladder β±(H). Single-file source architecture (main body + SI Appendices S-PanelOrigins / S-CrossTimeBeta inline). Drucker-style framing: the 2007 panel is treated as the foundational empirical reference throughout; this manuscript is offered as a complementary refinement of that framework, not a replacement. Internal build chain V162 → V194 → V200 → V204 → V205 (paper polish iterations preserved as comment history at the top of `main.tex`).
+- v0.2-internal-polish (not deposited; manuscript V128/V129) — Internal polish wave. Pushed to GitHub as historical tag `v1.1` but no GitHub Release was published; no Zenodo deposit was minted.
+- v0.1-bettencourt (withdrawn; manuscript V105) — Initial Bettencourt outreach deposit. Withdrawn 2026-05-12 once the manuscript polish gap to v1.0 was recognised. Zenodo tombstone: 10.5281/zenodo.20111480. Retired from this repository on 2026-05-13.
 
-  - **Hero page**: forest plot of the Bettencourt 22-indicator closure.
-  - **SI Appendix S-PanelOrigins**: per-indicator panel with three coverage tiers (17 strict integer + 4 continuous H_eff + 1 K=2 cluster mixture). Reading guide formalises three non-H→∞ paths to β=1 (cross-branch σ_gc=0 / continuous H_eff Jensen / K=2 cluster integer mixture).
-  - **SI Appendix S-CrossTimeBeta**: 15-row cross-time β reconstruction (hunter-gatherer band H=1 through post-human substrate H=8) with canonical β_pred values 1.311/1.171/1.114 for H=2/3/4.
-  - **Bettencourt foundational reference acknowledged** with framework-specific reframe for integer-ladder testing.
-  - All hyperlinks clickable (mailto, GitHub, Zenodo concept DOI, PatentsView, all bibliography DOIs via natbib auto-link).
-  - Manuscript prepared through 162 iterations of careful manual revision (cluster preview / SI tables / cross-paper notation alignment / page-layout tuning) and three rounds of independent peer-style audit before release.
+## Reproducibility
 
-- v0.2-internal-polish (not deposited; manuscript V128/V129) — Internal polish wave. Paper "-1" Manifesto 1 + Paper 0 Manifesto 2 reframe; abstract corrected to K=2 lower-valley H ∈ {1,2}; SI cross-time β table column collision fix; data and code availability section forward-looking. *(Pushed to GitHub as historical tag `v1.1` but no GitHub Release was published; no Zenodo deposit was minted.)*
+This v1.0 deposit includes a minimal Python reproducibility bundle in `scripts/`:
 
-- v0.1-bettencourt (withdrawn; manuscript V105) — Initial Bettencourt outreach deposit, withdrawn 2026-05-12 (retraction/withdrawal of a record) once the manuscript polish gap to v1.0 was recognised. Zenodo tombstone (citation metadata only): [10.5281/zenodo.20111480](https://doi.org/10.5281/zenodo.20111480). Superseded by v1.0 above; concept DOI [10.5281/zenodo.20111479](https://doi.org/10.5281/zenodo.20111479) now resolves to v1.0. *(Pushed to GitHub originally as historical tag `v1.0-bettencourt`; tag retired from this repository on 2026-05-13.)*
+- `scripts/sim_paper4_22_22_full_impl_v3.py` — central K=2 cluster-mixture closure protocol implementation (Stages 1–3 of Results §3.5–3.6). Reproduces the 17/22 single-integer + 22/22 hybrid closure with hardcoded Bettencourt 2007 PNAS panel values; no external data fetch required. Run: `python3 sim_paper4_22_22_full_impl_v3.py` (deps: numpy, pandas, scipy).
+- `scripts/paper4_numerical_verify.py` — independent re-computation of all β±(H) integer-rung values (H = 1 .. 8), the continuous β±(H_eff) values for the six mixture rows, and the MAE / RMSE on the audited 22-row slice.
+
+The following peripheral pipelines are **deferred to a subsequent versioned release** (v1.1) of this Zenodo deposit:
+
+- USPTO–CBSA 2010 cross-section standalone reconstruction (Paper 4 main-text primary anchor at β_obs = 1.298 [1.198, 1.398]).
+- EOC (Era of Crystallisation) audit bootstrap (n = 10 000) for the SI Appendix S-PanelOrigins window count [18, 22].
+
+For these pipelines, the manuscript text + SI documents the methodology prose-and-equation; full simulation/audit code is available from the corresponding author upon request.
 
 ## Author
 
@@ -50,24 +56,15 @@ Patents land on H = 2; GDP and wages occupy an H = 4–5 corridor; infrastructur
 
 ORCID: [0009-0007-6001-3267](https://orcid.org/0009-0007-6001-3267)
 
-## Companion papers
-
-This is Paper 4 in the Kato Equation Working Paper Cluster (Papers 0–10 + Manifesto 1/2 forthcoming):
-
-- Paper 1 — GDP scaling
-- Paper 2 — Demographic transition
-- Paper 3 — Kato Ladder & 70 ka human coordination (NHB)
-- **Paper 4 — Urban scaling 22/22 (this repository)**
-- Paper 5 — Civilizational ontology and dissipative cascade (Nature)
-
-## License
-
-- Manuscript text, figures, supplementary material: CC-BY-4.0
-- Simulation and analysis code: MIT
-
 ## Citation
 
 ```
-Kato, S. (2026). The Kato Equation: A Zero-Parameter Exponent Selection Rule for Urban Scaling.
-Zenodo. https://doi.org/10.5281/zenodo.20111479 (concept DOI; resolves to latest version).
+Kato, S. (2026). A Relay-Depth Exponent Ladder for the Bettencourt 22-Indicator Urban-Scaling Panel:
+A Zero-Fitted-Exponent Complementary Closure with Integer, Continuous, and Hybrid Assignments.
+Zenodo. https://doi.org/10.5281/zenodo.20145298 (versioned DOI).
 ```
+
+## License
+
+- Manuscript text and figures: CC-BY-4.0 (`LICENSE`).
+- Reproducibility code: MIT (`LICENSE-CODE`, mirrored as `scripts/LICENSE`).
