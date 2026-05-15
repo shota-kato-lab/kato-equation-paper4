@@ -1,8 +1,8 @@
-# Paper 4 — A Relay-Depth Exponent Ladder for the Bettencourt 22-Indicator Urban-Scaling Panel
+# Paper 4 — A Relay-Depth Exponent Ladder Closing the Bettencourt 22-Indicator Urban-Scaling Panel
 
 > A Zero-Fitted-Exponent Complementary Closure with Integer, Continuous, and Hybrid Assignments
 
-This repository accompanies the working paper **"A Relay-Depth Exponent Ladder for the Bettencourt 22-Indicator Urban-Scaling Panel — A Zero-Fitted-Exponent Complementary Closure with Integer, Continuous, and Hybrid Assignments"** (Paper 4 of the Kato Relay-Depth Working Paper Series).
+This repository accompanies the working paper **"A Relay-Depth Exponent Ladder Closing the Bettencourt 22-Indicator Urban-Scaling Panel — A Zero-Fitted-Exponent Complementary Closure with Integer, Continuous, and Hybrid Assignments"** (Paper 4 of the Kato Relay-Depth Working Paper Series).
 
 ## Headline result
 
@@ -17,7 +17,7 @@ Tested against Bettencourt et al. (PNAS 2007) canonical 22-indicator urban panel
 
 | File / folder | Content |
 |---|---|
-| `main.tex` | Paper 4 V206 manuscript (single-file architecture; SI Appendices S-PanelOrigins and S-CrossTimeBeta included inline) |
+| `main.tex` | Paper 4 V207 manuscript (single-file architecture; SI Appendices S-PanelOrigins and S-CrossTimeBeta included inline) |
 | `paper4_V28_refs.bib` / `refs.bib` | BibTeX references (V28: cited paper titles aligned with cluster canonical names) |
 | `paper4_fig_main.png` | Figure 1: Bettencourt 22-Indicator closure forest plot |
 | `fig_2_epsilon_curve.pdf` | Figure 2: ε(H) relay-depth curve |
@@ -32,18 +32,19 @@ Tested against Bettencourt et al. (PNAS 2007) canonical 22-indicator urban panel
 
 ## Release history
 
-- **v1.0 (this release; manuscript V206)** — Closing Bettencourt's canonical 22-indicator urban panel with a zero-fitted-exponent integer relay-depth ladder β±(H). Single-file source architecture (main body + SI Appendices S-PanelOrigins / S-CrossTimeBeta inline). Drucker-style framing: the 2007 panel is treated as the foundational empirical reference throughout; this manuscript is offered as a complementary refinement of that framework, not a replacement. Internal build chain V162 → V200 → V205 → V206 (paper polish iterations preserved as comment history at the top of `main.tex`). V206 = V205 + bibtex V27→V28 (cited paper titles aligned with cluster canonical names).
+- **v1.1 (this release; manuscript V207)** — Title verb refined from "for" (V206) to "Closing" to align with body-text wording (30+ occurrences of "closes/closure") and content accuracy (the 22/22 hybrid closure is the literal subject of the paper). All numerical content, figures, scripts, and bibliography unchanged from V206; only the title page verb is updated. Concept DOI 10.5281/zenodo.20145297 redirects to this v1.1 record.
+- v1.0 (manuscript V206, 2026-05-15) — Closing Bettencourt's canonical 22-indicator urban panel with a zero-fitted-exponent integer relay-depth ladder β±(H). Internal build chain V162 → V200 → V204 → V205 → V206 (paper polish iterations preserved as comment history at the top of `main.tex`). V206 = V205 + bibtex V27→V28 (cited paper titles aligned with cluster canonical names). Versioned DOI 10.5281/zenodo.20145298.
 - v0.2-internal-polish (not deposited; manuscript V128/V129) — Internal polish wave. Pushed to GitHub as historical tag `v1.1` but no GitHub Release was published; no Zenodo deposit was minted.
-- v0.1-bettencourt (withdrawn; manuscript V105) — Initial Bettencourt outreach deposit. Withdrawn 2026-05-12 once the manuscript polish gap to v1.0 was recognised. Zenodo tombstone: 10.5281/zenodo.20111480. Retired from this repository on 2026-05-13.
+- v0.1-bettencourt (withdrawn; manuscript V105) — Initial Bettencourt outreach deposit. Withdrawn 2026-05-12; Zenodo tombstone 10.5281/zenodo.20111480.
 
 ## Reproducibility
 
-This v1.0 deposit includes a minimal Python reproducibility bundle in `scripts/`:
+This deposit includes a minimal Python reproducibility bundle in `scripts/`:
 
 - `scripts/sim_paper4_22_22_full_impl_v3.py` — central K=2 cluster-mixture closure protocol implementation (Stages 1–3 of Results §3.5–3.6). Reproduces the 17/22 single-integer + 22/22 hybrid closure with hardcoded Bettencourt 2007 PNAS panel values; no external data fetch required. Run: `python3 sim_paper4_22_22_full_impl_v3.py` (deps: numpy, pandas, scipy).
 - `scripts/paper4_numerical_verify.py` — independent re-computation of all β±(H) integer-rung values (H = 1 .. 8), the continuous β±(H_eff) values for the six mixture rows, and the MAE / RMSE on the audited 22-row slice.
 
-The following peripheral pipelines are **deferred to a subsequent versioned release** (v1.1):
+The following peripheral pipelines are deferred to a subsequent versioned release:
 
 - USPTO–CBSA 2010 cross-section standalone reconstruction (Paper 4 main-text primary anchor at β_obs = 1.298 [1.198, 1.398]).
 - EOC (Era of Crystallisation) audit bootstrap (n = 10 000) for the SI Appendix S-PanelOrigins window count [18, 22].
@@ -59,9 +60,9 @@ ORCID: [0009-0007-6001-3267](https://orcid.org/0009-0007-6001-3267)
 ## Citation
 
 ```
-Kato, S. (2026). A Relay-Depth Exponent Ladder for the Bettencourt 22-Indicator Urban-Scaling Panel:
+Kato, S. (2026). A Relay-Depth Exponent Ladder Closing the Bettencourt 22-Indicator Urban-Scaling Panel:
 A Zero-Fitted-Exponent Complementary Closure with Integer, Continuous, and Hybrid Assignments.
-Zenodo. https://doi.org/10.5281/zenodo.20145298 (versioned DOI).
+Zenodo. https://doi.org/10.5281/zenodo.20145297 (concept DOI, resolves to latest version).
 ```
 
 ## License

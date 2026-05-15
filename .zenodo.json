@@ -1,6 +1,6 @@
 {
-  "title": "A Relay-Depth Exponent Ladder for the Bettencourt 22-Indicator Urban-Scaling Panel",
-  "description": "Working paper proposing an integer relay-depth exponent ladder beta_pm(H) = 1 pm 1/[H ln(2H+1)] that closes the canonical Bettencourt et al. (PNAS 2007) 22-indicator urban scaling panel at the 95% CI with zero fitted exponents. A zero-fitted-exponent complementary closure with integer, continuous, and hybrid assignments: 17/22 at single-integer H, 21/22 with continuous H_eff, 22/22 under a hybrid H in {2,3} cluster-mixture protocol (MAE 0.031, RMSE 0.045). The framework is pre-registered as falsifiable: a coverage drop to 21/22 or below at any audited release retires the closure. The 2007 panel is treated as the foundational empirical reference throughout; this manuscript is offered as a complementary refinement of that framework rather than a replacement. SI Appendix S-PanelOrigins: per-indicator provenance audit (12 direct strict rows, 5 audit-qualified single-H closures, 4 H in {2,3} explicit mixtures, 1 Bettencourt 2007 legacy comparator). SI Appendix S-CrossTimeBeta: pre-1971 H-era ladder reconstruction and withdrawal of the previously proposed single-population beta bridge. Paper 4 of the Kato Equation Working Paper Cluster. Release v1.0 (manuscript V205, internal build chain V162-V205 documented as comment history in main.tex).",
+  "title": "A Relay-Depth Exponent Ladder Closing the Bettencourt 22-Indicator Urban-Scaling Panel",
+  "description": "Working paper proposing an integer relay-depth exponent ladder beta_pm(H) = 1 pm 1/[H ln(2H+1)] that closes the canonical Bettencourt et al. (PNAS 2007) 22-indicator urban scaling panel at the 95% CI with zero fitted exponents. A zero-fitted-exponent complementary closure with integer, continuous, and hybrid assignments: 17/22 at single-integer H, 21/22 with continuous H_eff, 22/22 under a hybrid H in {2,3} cluster-mixture protocol (MAE 0.031, RMSE 0.045). The framework is pre-registered as falsifiable: a coverage drop to 21/22 or below at any audited release retires the closure. The 2007 panel is treated as the foundational empirical reference throughout; this manuscript is offered as a complementary refinement of that framework rather than a replacement. SI Appendix S-PanelOrigins: per-indicator provenance audit (12 direct strict rows, 5 audit-qualified single-H closures, 4 H in {2,3} explicit mixtures, 1 Bettencourt 2007 legacy comparator). SI Appendix S-CrossTimeBeta: pre-1971 H-era ladder reconstruction and withdrawal of the previously proposed single-population beta bridge. Paper 4 of the Kato Relay-Depth Working Paper Series. Release v1.1 (manuscript V207, title verb refined from 'for' (V206) to 'Closing' for body-text wording alignment; all numerical content unchanged).",
   "creators": [
     {
       "name": "Kato, Shota",
@@ -28,6 +28,11 @@
     {
       "relation": "isSupplementTo",
       "identifier": "https://github.com/shota-kato-lab/kato-equation-paper4"
+    },
+    {
+      "relation": "isNewVersionOf",
+      "identifier": "10.5281/zenodo.20145298",
+      "scheme": "doi"
     }
   ]
 }
