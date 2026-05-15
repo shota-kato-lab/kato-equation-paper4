@@ -17,8 +17,8 @@ Tested against Bettencourt et al. (PNAS 2007) canonical 22-indicator urban panel
 
 | File / folder | Content |
 |---|---|
-| `main.tex` | Paper 4 V207 manuscript (single-file architecture; SI Appendices S-PanelOrigins and S-CrossTimeBeta included inline) |
-| `paper4_V28_refs.bib` / `refs.bib` | BibTeX references (V28: cited paper titles aligned with cluster canonical names) |
+| `main.tex` | Paper 4 manuscript V21.6 (single-file architecture; SI Appendices S-PanelOrigins and S-CrossTimeBeta included inline) |
+| `paper4_V29_refs.bib` / `refs.bib` | BibTeX references (V29: V28 + reference note-field cleanup for editorial annotations removal) |
 | `paper4_fig_main.png` | Figure 1: Bettencourt 22-Indicator closure forest plot |
 | `fig_2_epsilon_curve.pdf` | Figure 2: ε(H) relay-depth curve |
 | `significance.tex` | 150-word significance statement |
@@ -32,8 +32,9 @@ Tested against Bettencourt et al. (PNAS 2007) canonical 22-indicator urban panel
 
 ## Release history
 
-- **v1.1 (this release; manuscript V207)** — Title verb refined from "for" (V206) to "Closing" to align with body-text wording (30+ occurrences of "closes/closure") and content accuracy (the 22/22 hybrid closure is the literal subject of the paper). All numerical content, figures, scripts, and bibliography unchanged from V206; only the title page verb is updated. Concept DOI 10.5281/zenodo.20145297 redirects to this v1.1 record.
-- v1.0 (manuscript V206, 2026-05-15) — Closing Bettencourt's canonical 22-indicator urban panel with a zero-fitted-exponent integer relay-depth ladder β±(H). Internal build chain V162 → V200 → V204 → V205 → V206 (paper polish iterations preserved as comment history at the top of `main.tex`). V206 = V205 + bibtex V27→V28 (cited paper titles aligned with cluster canonical names). Versioned DOI 10.5281/zenodo.20145298.
+- **v1.3 (this release; manuscript V21.6, 2026-05-16)** — Full editorial cleanup pass after the v1.0/v1.1 drafts were sent to the original author of the 22-indicator panel for outreach. A third-party meta-disclosure audit flagged inadvertent investor-style annotations in the v1.0/v1.1 drafts (reference note fields, SI cross-time-beta paragraph, scope-boundary paragraph, and title-page banner). These annotations were removed and the body wording was returned to standard academic phrasing. Author affiliation footer was corrected to the legal-name form "AI&Future Co., Ltd." Title verb "Closing" (v1.1) is retained, central claim (22/22 hybrid closure, MAE 0.031, RMSE 0.045) is retained, all figures, scripts, simulation outputs, and bibliography content are unchanged. Bibliography handle bumped V28 → V29 (reference note-field cleanup only). Concept DOI 10.5281/zenodo.20145297 redirects to this v1.3 record.
+- v1.1 (manuscript V207, 2026-05-15) — Withdrawn in favor of v1.3 (editorial-only cleanup). Title verb refined from "for" (V206) to "Closing" to align with body-text wording. Numerical content unchanged from V206; only the title page verb was updated.
+- v1.0 (manuscript V206, 2026-05-15) — Withdrawn in favor of v1.3 (editorial-only cleanup). Initial closing of Bettencourt's canonical 22-indicator urban panel with a zero-fitted-exponent integer relay-depth ladder β±(H). Versioned DOI 10.5281/zenodo.20145298 (historical anchor).
 - v0.2-internal-polish (not deposited; manuscript V128/V129) — Internal polish wave. Pushed to GitHub as historical tag `v1.1` but no GitHub Release was published; no Zenodo deposit was minted.
 - v0.1-bettencourt (withdrawn; manuscript V105) — Initial Bettencourt outreach deposit. Withdrawn 2026-05-12; Zenodo tombstone 10.5281/zenodo.20111480.
 
@@ -53,7 +54,7 @@ For these pipelines, the manuscript text + SI documents the methodology prose-an
 
 ## Author
 
-**Shota Kato** — Founder, AI and Future Co., Ltd. (Tokyo, Japan)
+**Shota Kato** — Founder, AI&Future Co., Ltd. (Tokyo, Japan)
 
 ORCID: [0009-0007-6001-3267](https://orcid.org/0009-0007-6001-3267)
 
