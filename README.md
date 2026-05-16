@@ -1,5 +1,17 @@
 # Paper 4 — A Relay-Depth Exponent Ladder Closing the Bettencourt 22-Indicator Urban-Scaling Panel
 
+> ⚠️ **Known issues in v1.3 — see [`KNOWN_ISSUES.md`](./KNOWN_ISSUES.md)**
+>
+> Five issues identified after the v1.3 deposit are publicly disclosed in `KNOWN_ISSUES.md`:
+> headline "22/22" framing requires three-tier split-reporting; empirical-uniqueness claim for the Kato
+> formula does not reproduce on independent recomputation (near-equivalents exist); self-reported MAE
+> deviates from the verification script's output; Poisson-binomial significance was overstated by ~7
+> orders of magnitude; the auxiliary `sim_paper4_22_22_full_impl_v3.py` script uses integer-rung values
+> inconsistent with the Kato formula. The Kato formula itself, the axiom-derived structural uniqueness,
+> the integer-H ladder structure, and the non-randomness conclusion remain valid. A v1.4 substantive
+> revision is in preparation. For numerical reproduction in the meantime, use
+> `scripts/paper4_numerical_verify.py` (canonical Kato values).
+
 > A Zero-Fitted-Exponent Complementary Closure with Integer, Continuous, and Hybrid Assignments
 
 This repository accompanies the working paper **"A Relay-Depth Exponent Ladder Closing the Bettencourt 22-Indicator Urban-Scaling Panel — A Zero-Fitted-Exponent Complementary Closure with Integer, Continuous, and Hybrid Assignments"** (Paper 4 of the Kato Relay-Depth Working Paper Series).
